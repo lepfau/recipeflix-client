@@ -44,10 +44,20 @@ export default {
       .catch(errorHandler);
   },
 
-  getItems() {
+  getRecipees() {
     return service
-      .get("/api/items")
+      .get("/api/recipees")
       .then((res) => res.data)
       .catch(errorHandler);
   },
+
+  createRecipee(recipeeInfo) {
+    return service
+      .post("/api/recipees", recipeeInfo)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  }
+
+
+
 };
