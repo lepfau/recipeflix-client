@@ -7,6 +7,8 @@ class FormCreate extends Component {
 
 state = {
     name: "",
+    ingredients: "",
+    image:"",
     httpResponse: null,
     error: null,
 }
@@ -15,19 +17,25 @@ state = {
 
 handleChange = (event) => {
     const key = event.target.name;
-    const value = event.target.value;
+    const value =
+    event.target.type === "file" ? event.target.files[0] : event.target.value;
     this.setState({[key] : value})
 }
 
 handleSubmit = (event) => {
     event.preventDefault();
+    const fd = new FormData();
+    const { httpResponse, ...data } = this.state;
+    buildFormData(fd, data);
 
     apiHandler
-    .createRecipee(this.state)
+    .createRecipee(fd)
     .then((data) => {
  
       this.setState({
         name: "",
+        ingredients: "",
+        image: "",
      
                
         httpResponse: {
@@ -60,11 +68,15 @@ handleSubmit = (event) => {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="name"></label>
+            <div className="formcontainer">
+                <form onSubmit={this.handleSubmit} className="formcreate">
+                    <label htmlFor="name">Recipe Name</label>
                     <input id="name" name="name" type="text" onChange={this.handleChange} value={this.state.name}></input>
-                    <button className="btn-submit-plant">Add Plant</button>
+                    <label htmlFor="ingredients">Ingredients</label>
+                    <input id="ingredients" name="ingredients" type="text"  onChange={this.handleChange} value={this.state.ingredients}></input>
+                    <label htmlFor="image">Image</label>
+                    <input id="image" name="image" type="file"  onChange={this.handleChange} ></input>
+                    <button className="btn-submit-plant">Add Recipe</button>
                 </form>
             </div>
         )

@@ -18,3 +18,15 @@ a {
 ul {
   list-style-type: none;
 }
+
+.formcreate {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.formcontainer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
