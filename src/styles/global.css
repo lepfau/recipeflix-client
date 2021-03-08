@@ -30,3 +30,47 @@ ul {
   justify-content: center;
   align-content: center;
 }
+
+.homepage {
+  background-image: url("https://wallpaperaccess.com/full/1306571.jpg");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 800px;
+  padding-top: 50px;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  flex-direction: column;
+}
+
+.homepage-title {
+  color: white;
+  font-size: 6vw;
+  text-shadow: 4px 4px 8px black;
+  margin-top: 90px;
+}
+
+.homepage-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.homepage-link {
+  color: white;
+  font-size: 30px;
+  text-shadow: 4px 4px 8px black;
+  margin: 20px;
+  background-color: whitesmoke;
+  padding: 15px 30px;
+  border-radius: 50px;
+  box-shadow: 2px 2px 4px black;
+  border: none;
+}
+
+.recettes-title {
+  color: red;
+}

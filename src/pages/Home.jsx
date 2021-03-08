@@ -1,18 +1,19 @@
 import React from "react";
-import FormCreate from "../components/Forms/FormCreate";
+import { NavLink } from "react-router-dom";
 
 class Home extends React.Component {
   render() {
     return (
-      <div>
-        <h2>
-          Welcome to Recipee App! ∆{" "}
-          <img
-            alt="vegetables"
-            src="https://wallpaperaccess.com/full/1306571.jpg"
-          />
-        </h2>
-        <FormCreate />
+      <div className="homepage">
+        <h2 className="homepage-title">Les recettes en folie ∆ </h2>
+        <div className="homepage-links">
+          <NavLink to="/recipes" className="homepage-link">
+            Les recettes
+          </NavLink>
+          <NavLink to="/recipes/create" className="homepage-link">
+            Ajouter une recette
+          </NavLink>
+        </div>
       </div>
     );
   }
