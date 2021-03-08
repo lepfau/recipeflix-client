@@ -74,3 +74,24 @@ ul {
 .recettes-title {
   color: red;
 }
+
+.recipe-card {
+  border: 2px solid black;
+  margin: 20px;
+  width: 60%;
+  padding: 20px;
+}
+
+.recettes {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.recipes-input {
+  display: flex;
+}
+
+input {
+  margin: 20px;
+}
