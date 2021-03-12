@@ -15,10 +15,6 @@ a {
   color: inherit;
 }
 
-ul {
-  list-style-type: none;
-}
-
 .formcreate {
   display: flex;
   flex-direction: column;

@@ -3,6 +3,7 @@ import apiHandler from "../../api/apiHandler";
 import { buildFormData } from "../../utils";
 import { withRouter } from "react-router-dom";
 import CreateIngredients from "./CreateIngredients";
+import CreateEtapes from "./CreateEtapes";
 
 class FormCreate extends Component {
   state = {
@@ -11,9 +12,11 @@ class FormCreate extends Component {
     image: "",
     httpResponse: null,
     error: null,
+    etapes: [],
   };
 
   handleChange = (event) => {
+    event.preventDefault();
     const key = event.target.name;
     const value =
       event.target.type === "file" ? event.target.files[0] : event.target.value;
@@ -24,6 +27,13 @@ class FormCreate extends Component {
     let ing = [...this.state.ingredients];
     this.setState({
       ingredients: [...ing, data],
+    });
+  };
+
+  handleEtapes = (data) => {
+    let ing = [...this.state.etapes];
+    this.setState({
+      etapes: [...ing, data],
     });
   };
 
@@ -80,7 +90,7 @@ class FormCreate extends Component {
         className="formcontainer"
         style={{ display: "flex", flexDirection: "column" }}
       >
-        <form onSubmit={this.handleSubmit} className="formcreate">
+        <form>
           <label htmlFor="name">Recipe Name</label>
           <input
             id="name"
@@ -89,18 +99,18 @@ class FormCreate extends Component {
             onChange={this.handleChange}
             value={this.state.name}
           ></input>
+        </form>
+        <CreateIngredients handleIngredients={this.handleIngredients} />
+        <CreateEtapes handleEtapes={this.handleEtapes} />
+        <form>
           <label htmlFor="image">Image</label>
-
           <input
             id="image"
             name="image"
             type="file"
             onChange={this.handleChange}
           ></input>
-          <button className="btn-submit-plant">Add Recipe</button>
         </form>
-        <CreateIngredients handleIngredients={this.handleIngredients} />
-
         {this.state.ingredients
           ? this.state.ingredients.map((ing) => {
               return (
@@ -113,6 +123,14 @@ class FormCreate extends Component {
               );
             })
           : null}
+        <ol style={{ marginLeft: "50px" }}>
+          {this.state.etapes
+            ? this.state.etapes.map((ing) => {
+                return <li>{ing}</li>;
+              })
+            : null}
+        </ol>
+        <button onClick={this.handleSubmit}>Enregistrer</button>
       </div>
     );
   }
