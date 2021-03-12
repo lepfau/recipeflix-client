@@ -78,20 +78,27 @@ ul {
 .recipe-card {
   border: 2px solid black;
   margin: 20px;
-  width: 60%;
+  width: 100%;
   padding: 20px;
 }
 
-.recettes {
+.recipes-inputs {
   display: flex;
-  align-items: center;
+
+  margin-left: 20px;
+  margin-top: 30px;
+  border: 1px black solid;
+  width: 50%;
+}
+
+.container {
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
-.recipes-input {
-  display: flex;
-}
-
-input {
-  margin: 20px;
+.recipe-container {
+  width: 85%;
 }

@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import apiHandler from "../../api/apiHandler";
 import { buildFormData } from "../../utils";
 import { withRouter } from "react-router-dom";
+import CreateIngredients from "./CreateIngredients";
 
 class FormCreate extends Component {
   state = {
     name: "",
-    ingredients: "",
+    ingredients: [],
     image: "",
     httpResponse: null,
     error: null,
@@ -17,6 +18,13 @@ class FormCreate extends Component {
     const value =
       event.target.type === "file" ? event.target.files[0] : event.target.value;
     this.setState({ [key]: value });
+  };
+
+  handleIngredients = (data) => {
+    let ing = [...this.state.ingredients];
+    this.setState({
+      ingredients: [...ing, data],
+    });
   };
 
   handleSubmit = (event) => {
@@ -30,7 +38,7 @@ class FormCreate extends Component {
       .then((data) => {
         this.setState({
           name: "",
-          ingredients: "",
+          ingredients: [],
           image: "",
           httpResponse: {
             status: "success",
@@ -57,9 +65,21 @@ class FormCreate extends Component {
       });
   };
 
+  handleRemove = (ing) => {
+    console.log(ing);
+    let filtered = [...this.state.ingredients];
+    let final = filtered.filter((item) => item !== ing);
+    this.setState({
+      ingredients: final,
+    });
+  };
+
   render() {
     return (
-      <div className="formcontainer">
+      <div
+        className="formcontainer"
+        style={{ display: "flex", flexDirection: "column" }}
+      >
         <form onSubmit={this.handleSubmit} className="formcreate">
           <label htmlFor="name">Recipe Name</label>
           <input
@@ -69,15 +89,8 @@ class FormCreate extends Component {
             onChange={this.handleChange}
             value={this.state.name}
           ></input>
-          <label htmlFor="ingredients">Ingredients</label>
-          <input
-            id="ingredients"
-            name="ingredients"
-            type="text"
-            onChange={this.handleChange}
-            value={this.state.ingredients}
-          ></input>
           <label htmlFor="image">Image</label>
+
           <input
             id="image"
             name="image"
@@ -86,6 +99,20 @@ class FormCreate extends Component {
           ></input>
           <button className="btn-submit-plant">Add Recipe</button>
         </form>
+        <CreateIngredients handleIngredients={this.handleIngredients} />
+
+        {this.state.ingredients
+          ? this.state.ingredients.map((ing) => {
+              return (
+                <div>
+                  <p>{ing}</p>
+                  <button onClick={() => this.handleRemove(ing)}>
+                    retirer
+                  </button>
+                </div>
+              );
+            })
+          : null}
       </div>
     );
   }
