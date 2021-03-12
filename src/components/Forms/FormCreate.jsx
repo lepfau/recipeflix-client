@@ -10,6 +10,10 @@ class FormCreate extends Component {
     name: "",
     ingredients: [],
     image: "",
+    vegan: false,
+    vegeratarian: false,
+    gluten: false,
+    lactose: false,
     httpResponse: null,
     error: null,
     etapes: [],
@@ -34,6 +38,13 @@ class FormCreate extends Component {
     let ing = [...this.state.etapes];
     this.setState({
       etapes: [...ing, data],
+    });
+  };
+
+  handleCheck = (event) => {
+    const name = event.target.name;
+    this.setState({
+      [name]: event.target.checked,
     });
   };
 
@@ -84,6 +95,10 @@ class FormCreate extends Component {
     });
   };
 
+  handleSubmitName = (event) => {
+    event.preventDefault();
+  };
+
   render() {
     return (
       <div
@@ -100,6 +115,37 @@ class FormCreate extends Component {
             value={this.state.name}
           ></input>
         </form>
+        <form>
+          <label htmlFor="vegan">Vegan</label>
+          <input
+            onChange={this.handleCheck}
+            type="checkbox"
+            name="vegan"
+            id="vegan"
+          ></input>
+          <label htmlFor="vegetarian">Vegertarien</label>
+          <input
+            onChange={this.handleCheck}
+            type="checkbox"
+            name="vegetarian"
+            id="vegetarian"
+          ></input>
+          <label htmlFor="gluten">Sans Gluten</label>
+          <input
+            onChange={this.handleCheck}
+            type="checkbox"
+            name="gluten"
+            id="gluten"
+          ></input>
+          <label htmlFor="lactos">Sans Lactose</label>
+          <input
+            onChange={this.handleCheck}
+            type="checkbox"
+            name="lactose"
+            id="lactose"
+          ></input>
+        </form>
+
         <CreateIngredients handleIngredients={this.handleIngredients} />
         <CreateEtapes handleEtapes={this.handleEtapes} />
         <form>
