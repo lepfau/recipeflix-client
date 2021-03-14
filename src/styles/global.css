@@ -58,7 +58,7 @@ a {
 
 .homepage-link {
   color: white;
-  font-size: 25px;
+  font-size: 1.5vw;
   text-shadow: 4px 4px 8px black;
   margin: 20px;
   background-color: whitesmoke;
@@ -195,7 +195,7 @@ input:checked + .slider:before {
 
 .searchbar {
   width: 50vh;
-  height: 5vh;
+  height: 55px;
   border: none;
   border-radius: 25px;
   outline: none !important;

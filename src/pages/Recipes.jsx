@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import apiHandler from "../api/apiHandler";
 import Recipe from "../components/Recipe";
+import Searchbar from "../components/Searchbar";
 
 function Recipes(props) {
   const [recettes, setRecettes] = useState([]);
@@ -32,9 +33,24 @@ function Recipes(props) {
     event.target.checked ? setVegan(true) : setVegan(false);
   }
 
+  function handleSearch(inputsearch) {
+    apiHandler
+      .getRecipes()
+      .then((resp) => {
+        let arr = resp.filter((rec) =>
+          rec.name.toLowerCase().includes(inputsearch.toLowerCase())
+        );
+        setRecettes(arr);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   return (
     <div className="recettes">
       <h1 className="recettes-title">Les Recettes </h1>
+      <Searchbar handleSearch={handleSearch} />
       <input
         type="checkbox"
         checked={vegan}

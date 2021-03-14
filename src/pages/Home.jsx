@@ -1,13 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Searchbar from "../components/Searchbar";
+import { withRouter } from "react-router-dom";
 
 class Home extends React.Component {
   render() {
     return (
       <div className="homepage">
         <h2 className="homepage-title">App Recettes ∆ </h2>
-        <Searchbar />
+
         <div className="homepage-links">
           <NavLink to="/recipes" className="homepage-link">
             Les recettes
@@ -21,4 +22,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default withRouter(Home);
