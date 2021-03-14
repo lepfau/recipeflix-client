@@ -7,6 +7,7 @@ import Signup from "./pages/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./pages/Profile";
 import Recipes from "./pages/Recipes";
+import OneRecipe from "./components/OneRecipe";
 import FormCreate from "./components/Forms/FormCreate";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/recipes" component={Recipes} />
         <Route exact path="/recipes/create" component={FormCreate} />
+        <Route exact path="/recipes/:id" component={OneRecipe} />
         <ProtectedRoute exact path="/profile" component={Profile} />
       </Switch>
     </div>

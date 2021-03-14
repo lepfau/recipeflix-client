@@ -24,6 +24,7 @@ const NavMain = (props) => {
       <NavLink exact to="/">
         <h3 className="logo">Recipes</h3>
       </NavLink>
+
       <ul className="nav-list">
         {context.isLoggedIn && (
           <React.Fragment>

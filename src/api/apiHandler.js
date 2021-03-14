@@ -50,24 +50,16 @@ export default {
       .then((res) => res.data)
       .catch(errorHandler);
   },
-
-  getRecipesAil() {
-    return service
-      .get("/api/recipes/ail")
-      .then((res) => res.data)
-      .catch(errorHandler);
-  },
-
-  getRecipesCitron() {
-    return service
-      .get("/api/recipes/citron")
-      .then((res) => res.data)
-      .catch(errorHandler);
-  },
-
   createRecipee(recipeInfo) {
     return service
       .post("/api/recipes", recipeInfo)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  getOneRecipe(id) {
+    return service
+      .get(`/api/recipes/${id}`)
       .then((res) => res.data)
       .catch(errorHandler);
   },

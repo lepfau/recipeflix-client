@@ -11,7 +11,7 @@ class FormCreate extends Component {
     ingredients: [],
     image: "",
     vegan: false,
-    vegeratarian: false,
+    vegetarian: false,
     gluten: false,
     lactose: false,
     httpResponse: null,
@@ -95,18 +95,20 @@ class FormCreate extends Component {
     });
   };
 
-  handleSubmitName = (event) => {
-    event.preventDefault();
+  handleRemoveSteps = (ing) => {
+    console.log(ing);
+    let filtered = [...this.state.etapes];
+    let final = filtered.filter((item) => item !== ing);
+    this.setState({
+      etapes: final,
+    });
   };
 
   render() {
     return (
-      <div
-        className="formcontainer"
-        style={{ display: "flex", flexDirection: "column" }}
-      >
+      <div className="formcontainer">
         <form>
-          <label htmlFor="name">Recipe Name</label>
+          <label htmlFor="name">Nom</label>
           <input
             id="name"
             name="name"
@@ -115,39 +117,83 @@ class FormCreate extends Component {
             value={this.state.name}
           ></input>
         </form>
-        <form>
-          <label htmlFor="vegan">Vegan</label>
-          <input
-            onChange={this.handleCheck}
-            type="checkbox"
-            name="vegan"
-            id="vegan"
-          ></input>
-          <label htmlFor="vegetarian">Vegertarien</label>
-          <input
-            onChange={this.handleCheck}
-            type="checkbox"
-            name="vegetarian"
-            id="vegetarian"
-          ></input>
-          <label htmlFor="gluten">Sans Gluten</label>
-          <input
-            onChange={this.handleCheck}
-            type="checkbox"
-            name="gluten"
-            id="gluten"
-          ></input>
-          <label htmlFor="lactos">Sans Lactose</label>
-          <input
-            onChange={this.handleCheck}
-            type="checkbox"
-            name="lactose"
-            id="lactose"
-          ></input>
+        <form className="container-vegan">
+          <div>
+            <h2>Spécificités</h2>
+          </div>
+          <div>
+            <div className="labelinput-vegan">
+              <label htmlFor="vegan">Vegan</label>
+              <input
+                onChange={this.handleCheck}
+                type="checkbox"
+                name="vegan"
+                id="vegan"
+              ></input>
+            </div>
+            <div className="labelinput-vegan">
+              <label htmlFor="vegetarian">Vegetarian</label>
+              <input
+                onChange={this.handleCheck}
+                type="checkbox"
+                name="vegetarian"
+                id="vegetarian"
+              ></input>
+            </div>
+            <div className="labelinput-vegan">
+              <label htmlFor="gluten">Sans Gluten</label>
+              <input
+                onChange={this.handleCheck}
+                type="checkbox"
+                name="gluten"
+                id="gluten"
+              ></input>
+            </div>
+            <div className="labelinput-vegan">
+              <label htmlFor="lactos">Sans Lactose</label>
+              <input
+                onChange={this.handleCheck}
+                type="checkbox"
+                name="lactose"
+                id="lactose"
+              ></input>
+            </div>
+          </div>
         </form>
 
         <CreateIngredients handleIngredients={this.handleIngredients} />
-        <CreateEtapes handleEtapes={this.handleEtapes} />
+
+        {this.state.ingredients ? (
+          this.state.ingredients.map((ing, index) => {
+            return (
+              <div key={index}>
+                <p>{ing[0].toUpperCase() + ing.substring(1)}</p>
+                <button onClick={() => this.handleRemove(ing)}>retirer</button>
+              </div>
+            );
+          })
+        ) : (
+          <h1>YOOO</h1>
+        )}
+        <ol style={{ marginLeft: "50px" }}>
+          <CreateEtapes handleEtapes={this.handleEtapes} />
+          {this.state.etapes ? (
+            this.state.etapes.map((ing, index) => {
+              return (
+                <div key={index}>
+                  <li>{ing[0].toUpperCase() + ing.substring(1)}</li>
+                  <button onClick={() => this.handleRemoveSteps(ing)}>
+                    retirer
+                  </button>
+                </div>
+              );
+            })
+          ) : (
+            <div>
+              <p>pas d'ingredients pour le moment</p>
+            </div>
+          )}
+        </ol>
         <form>
           <label htmlFor="image">Image</label>
           <input
@@ -157,25 +203,6 @@ class FormCreate extends Component {
             onChange={this.handleChange}
           ></input>
         </form>
-        {this.state.ingredients
-          ? this.state.ingredients.map((ing) => {
-              return (
-                <div>
-                  <p>{ing}</p>
-                  <button onClick={() => this.handleRemove(ing)}>
-                    retirer
-                  </button>
-                </div>
-              );
-            })
-          : null}
-        <ol style={{ marginLeft: "50px" }}>
-          {this.state.etapes
-            ? this.state.etapes.map((ing) => {
-                return <li>{ing}</li>;
-              })
-            : null}
-        </ol>
         <button onClick={this.handleSubmit}>Enregistrer</button>
       </div>
     );
