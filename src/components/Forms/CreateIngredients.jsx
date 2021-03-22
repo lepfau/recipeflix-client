@@ -22,15 +22,21 @@ export default class CreateIngredients extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="ingredients">Ingredients</label>
-        <input
-          onChange={this.handleChange}
-          id="ingredients"
-          name="ingredietns"
-          type="text"
-          value={this.state.ingredients}
-        ></input>
+      <form onSubmit={this.handleSubmit} className="formname ">
+        <label htmlFor="ingredients" className="formcreatelabel">
+          Ingredients
+        </label>
+        <div className="inputbutton">
+          <input
+            className="formcreateinput"
+            onChange={this.handleChange}
+            id="ingredients"
+            name="ingredietns"
+            type="text"
+            value={this.state.ingredients}
+          ></input>
+          <button type="submit">+</button>
+        </div>
       </form>
     );
   }

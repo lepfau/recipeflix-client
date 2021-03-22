@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+
+.wholepagecreate {
+  margin-left: 30px;
+  margin-top: 50px;
+}
+
+.formcontainer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.formcreate-title {
+  margin-bottom: 30px;
+}
+
+.fieldscreateform {
+  background-color: whitesmoke;
+  padding: 31px;
+  border-radius: 12px;
+}
+
+.inputlabelscreate {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.formname {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.forming {
+  display: flex;
+}
+
+.formcreateinput {
+  width: 350px;
+}
+
+.ingredient {
+  display: flex;
+
+  width: 200px;
+}
+
+.etape {
+  display: flex;
+}
+
+.ingredient p {
+  margin-right: 30px;
+}
+
+.etape li {
+  margin-right: 30px;
+}
+
+.btncreateform {
+  margin-top: 50px;
+  padding: 15px;
+}
+
+.specificites {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.labelinput-vegan {
+  margin-top: 8px;
+}
+
+.inputbutton {
+  display: flex;
+}
+
+.ingredientsetapes {
+  margin-left: 100px;
+}
+
+.ingredients {
+  margin-bottom: 40px;
+}
+
+input {
+  border-radius: 8px;
+  outline: none !important;
+  border: none;
+  padding-left: 10px;
+  margin-right: 10px;
+}
+
+select {
+  border-radius: 8px;
+  border: none;
+  outline: none !important;
+  padding-left: 10px;
+}

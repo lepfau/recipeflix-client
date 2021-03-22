@@ -22,15 +22,21 @@ export default class CreateEtapes extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="etapes">Etapes</label>
-        <input
-          onChange={this.handleChange}
-          id="etapes"
-          name="etapes"
-          type="text"
-          value={this.state.etapes}
-        ></input>
+      <form className="formname" onSubmit={this.handleSubmit}>
+        <label htmlFor="etapes" className="formcreatelabel">
+          Etapes
+        </label>
+        <div className="inputbutton">
+          <input
+            className="formcreateinput"
+            onChange={this.handleChange}
+            id="etapes"
+            name="etapes"
+            type="text"
+            value={this.state.etapes}
+          ></input>
+          <button type="submit"> + </button>
+        </div>
       </form>
     );
   }

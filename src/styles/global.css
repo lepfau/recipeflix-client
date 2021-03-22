@@ -8,7 +8,6 @@
 
 html {
   font-family: "Manrope", sans-serif;
-  height: 100%;
 }
 
 a {
@@ -16,60 +15,12 @@ a {
   color: inherit;
 }
 
-.formcreate {
+.recettes {
   display: flex;
   flex-direction: column;
-  width: 50%;
-}
-
-.formcontainer {
-  display: flex;
+  align-items: center;
   justify-content: center;
-  align-content: center;
-}
-
-.homepage {
-  background-image: url("https://wallpaperaccess.com/full/1306571.jpg");
-  background-position: 0 0;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 90vh;
-  padding-top: 50px;
-  position: relative;
-  display: flex;
-  align-items: center;
-
-  flex-direction: column;
-}
-
-.homepage-title {
-  color: white;
-  font-size: 6vw;
-  text-shadow: 4px 4px 8px black;
-  margin-top: 90px;
-}
-
-.homepage-links {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
-}
-
-.homepage-link {
-  color: white;
-  font-size: 1.5vw;
-  text-shadow: 4px 4px 8px black;
-  margin: 20px;
-  background-color: whitesmoke;
-  padding: 15px 30px;
-  border-radius: 30px;
-  box-shadow: 2px 2px 4px black;
-  border: none;
-}
-
-.homepage-link:hover {
-  background-color: green;
+  background-color: lightgray;
 }
 
 .recettes-title {
@@ -89,15 +40,6 @@ a {
   background-color: white;
 }
 
-.recipes-inputs {
-  display: flex;
-
-  margin-left: 20px;
-  margin-top: 30px;
-  border: 1px black solid;
-  width: 50%;
-}
-
 .container {
   display: flex;
   flex-direction: row;
@@ -110,87 +52,6 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.loading {
-  margin-top: 200px;
-  background: none;
-}
-
-.formcontainer {
-  display: flex;
-  flex-direction: column;
-}
-
-.container-vegan {
-  display: flex;
-  flex-direction: column;
-}
-
-.labelinput-vegan {
-  margin: 5px 20px;
-}
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-input:checked + .slider {
-  background-color: #2196f3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
 }
 
 .searchbar {

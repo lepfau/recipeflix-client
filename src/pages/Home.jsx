@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Searchbar from "../components/Searchbar";
 import { withRouter } from "react-router-dom";
 
 class Home extends React.Component {

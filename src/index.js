@@ -6,6 +6,8 @@ import App from "./App";
 
 import "./styles/reset.css";
 import "./styles/global.css";
+import "./styles/Home.css";
+import "./styles/FormCreate.css";
 
 ReactDOM.render(
   <BrowserRouter>

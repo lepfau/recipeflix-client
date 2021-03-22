@@ -18,6 +18,16 @@ function OneRecipe(props) {
   return (
     <div>
       <h1>{oneRecipe.name}</h1>
+      <img src={oneRecipe.image} alt="img" />
+      {oneRecipe.ingredients
+        ? oneRecipe.ingredients.map((ing, index) => {
+            return (
+              <div className="ingredient" key={index}>
+                <p>{ing[0].toUpperCase() + ing.substring(1)}</p>
+              </div>
+            );
+          })
+        : null}
     </div>
   );
 }
