@@ -13,7 +13,8 @@ class FormCreate extends Component {
     type: "plat",
     temps: 0,
     ingredients: [],
-    image: "",
+    image:
+      "http://lesbonsplansdelili.com/wp-content/uploads/2020/06/pates-ingredients-cuisine_23-2147749530-2.jpg",
     vegan: false,
     vegetarian: false,
     gluten: false,
@@ -305,7 +306,7 @@ class FormCreate extends Component {
               </div>
               {this.state.file !== null && (
                 <img
-                  style={{ width: "300px", height: "auto" }}
+                  style={{ width: "150px", height: "auto" }}
                   src={this.state.file}
                   alt="recipeimage"
                 />

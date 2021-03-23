@@ -8,6 +8,7 @@ import "./styles/reset.css";
 import "./styles/global.css";
 import "./styles/Home.css";
 import "./styles/FormCreate.css";
+import "./styles/Recettes.css";
 
 ReactDOM.render(
   <BrowserRouter>

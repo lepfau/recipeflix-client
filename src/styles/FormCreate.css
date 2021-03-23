@@ -1,13 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Pacifico:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500;600;700;800&display=swap");
 .wholepage {
   display: flex;
   justify-content: center;
-  background-image: url("http://lesbonsplansdelili.com/wp-content/uploads/2020/06/pates-ingredients-cuisine_23-2147749530-2.jpg");
+  background-color: #141414;
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 95vh;
+  color: white;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 1em;
 }
 
 .wholepagecreate {
@@ -19,7 +24,7 @@
   margin-top: 25px;
   width: 75%;
   background-color: white;
-  border-radius: 15px;
+  border-radius: 8px;
   box-shadow: 20px 20px 40px black;
   min-width: 880px;
   min-height: 830px;
@@ -32,17 +37,21 @@
 }
 
 .formcreate-title {
-  font-size: 3em;
-  font-weight: 800;
+  font-size: 4em;
+  font-weight: 200;
   margin-top: 25px;
   margin-bottom: 35px;
   text-align: center;
+  color: black;
+
+  font-family: Pacifico;
 }
 
 .fieldscreateform {
-  background-color: #fff3e6;
+  background-color: #353535;
   padding: 31px;
-  border-radius: 12px;
+  border-radius: 8px;
+  box-shadow: 4px 4px 8px #141414;
 }
 
 .inputlabelscreate {
@@ -103,14 +112,15 @@
   width: 40%;
   margin-top: 35px;
   padding: 15px;
-  border-radius: 12px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
   margin-bottom: 15px;
-  background-color: #fff3e6;
-  box-shadow: 4px 4px 8px black;
+  background-color: #353535;
+  box-shadow: 4px 4px 8px #141414;
   font-weight: 800;
   font-size: 1em;
+  color: white;
 }
 
 .btncreateform:hover {
@@ -130,21 +140,27 @@
 }
 
 .ingredientsetapes {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+  align-items: center;
 }
 
 .etapes {
   margin-bottom: 40px;
-  background-color: #fff3e6;
+  background-color: #353535;
   padding: 31px;
-  border-radius: 12px;
+  border-radius: 8px;
   width: 580px;
+  box-shadow: 4px 4px 8px #141414;
 }
 .ingredients {
   margin-bottom: 40px;
-  background-color: #fff3e6;
+  background-color: #353535;
   padding: 31px;
-  border-radius: 12px;
+  border-radius: 8px;
   width: 400px;
+  box-shadow: 4px 4px 8px #141414;
 }
 
 input {
