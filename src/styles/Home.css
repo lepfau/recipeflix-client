@@ -3,8 +3,8 @@
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 95vh;
-
+  min-height: 95vh;
+  width: 100%;
   position: relative;
   display: flex;
   align-items: center;
@@ -14,7 +14,7 @@
 
 .homepage-title {
   color: white;
-  font-size: 6vw;
+  font-size: 3em;
   text-shadow: 8px 8px 16px black;
   margin-top: 90px;
 }
@@ -28,7 +28,7 @@
 
 .homepage-link {
   color: white;
-  font-size: 1.5vw;
+  font-size: 1.5em;
   text-shadow: 4px 4px 8px black;
   margin: 20px;
   background-color: whitesmoke;
@@ -40,4 +40,9 @@
 
 .homepage-link:hover {
   background-color: green;
+}
+
+.wholehomepage {
+  display: flex;
+  justify-content: center;
 }

@@ -21,6 +21,7 @@ class FormCreate extends Component {
     httpResponse: null,
     error: null,
     etapes: [],
+    file: null,
   };
 
   handleChange = (event) => {
@@ -28,21 +29,28 @@ class FormCreate extends Component {
     const key = event.target.name;
     const value =
       event.target.type === "file" ? event.target.files[0] : event.target.value;
-    this.setState({ [key]: value });
+    this.setState({
+      [key]: value,
+      file: URL.createObjectURL(event.target.files[0]),
+    });
   };
 
   handleIngredients = (data) => {
-    let ing = [...this.state.ingredients];
-    this.setState({
-      ingredients: [...ing, data],
-    });
+    if (data) {
+      let ing = [...this.state.ingredients];
+      this.setState({
+        ingredients: [...ing, data],
+      });
+    }
   };
 
   handleEtapes = (data) => {
-    let ing = [...this.state.etapes];
-    this.setState({
-      etapes: [...ing, data],
-    });
+    if (data) {
+      let ing = [...this.state.etapes];
+      this.setState({
+        etapes: [...ing, data],
+      });
+    }
   };
 
   handleCheck = (event) => {
@@ -83,9 +91,8 @@ class FormCreate extends Component {
           },
         });
         this.timeoutId = setTimeout(() => {
-          this.props.history.push("/signup");
           this.setState({ httpResponse: null });
-        }, 3000);
+        }, 2000);
       });
   };
 
@@ -113,184 +120,197 @@ class FormCreate extends Component {
 
   render() {
     return (
-      <div className="wholepagecreate">
-        <h1
-          style={{
-            color: "white",
-            backgroundColor: "red",
-            position: "fixed",
-            top: "50%",
-            left: "50%",
-            marginTop: "-100px",
-            marginLeft: "-250px",
-          }}
-        >
-          {this.state.httpResponse && this.state.httpResponse.message}
-        </h1>
-        <h1 className="formcreate-title">Ajouter une recette</h1>
-        <div className="formcontainer">
-          <div className="fieldscreateform">
-            <div className="inputlabelscreate">
-              <form className="formname" onSubmit={this.handleNamesubmit}>
-                <label htmlFor="name" className="formcreatelabel">
-                  Nom
-                </label>
+      <div className="wholepage">
+        <div className="wholepagecreate">
+          <h1
+            style={{
+              color: "white",
+              width: "80%",
+              fontSize: "3.5em",
+              backgroundColor: "red",
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              textAlign: "center",
+            }}
+          >
+            {this.state.httpResponse && this.state.httpResponse.message}
+          </h1>
+          <h1 className="formcreate-title">Ajouter une recette</h1>
 
+          <div className="formcontainer">
+            <div className="fieldscreateform">
+              <div className="inputlabelscreate">
+                <form className="formname" onSubmit={this.handleNamesubmit}>
+                  <label htmlFor="name" className="formcreatelabel">
+                    Nom
+                  </label>
+
+                  <input
+                    className="formcreateinput"
+                    id="name"
+                    name="name"
+                    type="text"
+                    onChange={this.handleChange}
+                    value={this.state.name}
+                  ></input>
+                </form>
+                <form className="formname" onSubmit={this.handleNamesubmit}>
+                  <label htmlFor="type" className="formcreatelabel">
+                    Type
+                  </label>
+                  <select
+                    className="formcreateinput"
+                    id="type"
+                    name="type"
+                    onChange={this.handleChange}
+                    value={this.state.type}
+                  >
+                    <option value="snack">Snack</option>
+                    <option value="plat">Plat</option>
+                    <option value="dessert">Dessert</option>
+                    <option value="autre">Autre</option>
+                  </select>
+                </form>
+                <form className="formname" onSubmit={this.handleNamesubmit}>
+                  <label htmlFor="name" className="formcreatelabel">
+                    Durée (min)
+                  </label>
+
+                  <input
+                    className="formcreateinput"
+                    id="temps"
+                    name="temps"
+                    type="number"
+                    onChange={this.handleChange}
+                    value={this.state.temps}
+                  ></input>
+                </form>
+                <CreateIngredients handleIngredients={this.handleIngredients} />
+
+                <CreateEtapes handleEtapes={this.handleEtapes} />
+              </div>
+              <form className="specificites">
+                <div>
+                  <h3>Spécificités</h3>
+                </div>
+                <div className="container-vegan">
+                  <div className="labelinput-vegan">
+                    <label htmlFor="vegan">Vegan</label>
+                    <input
+                      onChange={this.handleCheck}
+                      type="checkbox"
+                      name="vegan"
+                      id="vegan"
+                    ></input>
+                  </div>
+                  <div className="labelinput-vegan">
+                    <label htmlFor="vegetarian">Vegetarian</label>
+                    <input
+                      onChange={this.handleCheck}
+                      type="checkbox"
+                      name="vegetarian"
+                      id="vegetarian"
+                    ></input>
+                  </div>
+                  <div className="labelinput-vegan">
+                    <label htmlFor="gluten">Sans Gluten</label>
+                    <input
+                      onChange={this.handleCheck}
+                      type="checkbox"
+                      name="gluten"
+                      id="gluten"
+                    ></input>
+                  </div>
+                  <div className="labelinput-vegan">
+                    <label htmlFor="lactose">Sans Lactose</label>
+                    <input
+                      onChange={this.handleCheck}
+                      type="checkbox"
+                      name="lactose"
+                      id="lactose"
+                    ></input>
+                  </div>
+                </div>
+              </form>
+              <form>
+                <label style={{ marginRight: "10px" }} htmlFor="image">
+                  Photo
+                </label>
                 <input
-                  className="formcreateinput"
-                  id="name"
-                  name="name"
-                  type="text"
+                  id="image"
+                  name="image"
+                  type="file"
                   onChange={this.handleChange}
-                  value={this.state.name}
                 ></input>
               </form>
-              <form className="formname" onSubmit={this.handleNamesubmit}>
-                <label htmlFor="type" className="formcreatelabel">
-                  Type
-                </label>
-                <select
-                  className="formcreateinput"
-                  id="type"
-                  name="type"
-                  onChange={this.handleChange}
-                  value={this.state.type}
-                >
-                  <option value="snack">Snack</option>
-                  <option value="plat">Plat</option>
-                  <option value="dessert">Dessert</option>
-                  <option value="autre">Autre</option>
-                </select>
-              </form>
-              <form className="formname" onSubmit={this.handleNamesubmit}>
-                <label htmlFor="name" className="formcreatelabel">
-                  Durée (min)
-                </label>
-
-                <input
-                  className="formcreateinput"
-                  id="temps"
-                  name="temps"
-                  type="number"
-                  onChange={this.handleChange}
-                  value={this.state.temps}
-                ></input>
-              </form>
-              <CreateIngredients handleIngredients={this.handleIngredients} />
-
-              <CreateEtapes handleEtapes={this.handleEtapes} />
             </div>
-            <form className="specificites">
-              <div>
-                <h3>Spécificités</h3>
-              </div>
-              <div className="container-vegan">
-                <div className="labelinput-vegan">
-                  <label htmlFor="vegan">Vegan</label>
-                  <input
-                    onChange={this.handleCheck}
-                    type="checkbox"
-                    name="vegan"
-                    id="vegan"
-                  ></input>
-                </div>
-                <div className="labelinput-vegan">
-                  <label htmlFor="vegetarian">Vegetarian</label>
-                  <input
-                    onChange={this.handleCheck}
-                    type="checkbox"
-                    name="vegetarian"
-                    id="vegetarian"
-                  ></input>
-                </div>
-                <div className="labelinput-vegan">
-                  <label htmlFor="gluten">Sans Gluten</label>
-                  <input
-                    onChange={this.handleCheck}
-                    type="checkbox"
-                    name="gluten"
-                    id="gluten"
-                  ></input>
-                </div>
-                <div className="labelinput-vegan">
-                  <label htmlFor="lactose">Sans Lactose</label>
-                  <input
-                    onChange={this.handleCheck}
-                    type="checkbox"
-                    name="lactose"
-                    id="lactose"
-                  ></input>
-                </div>
-              </div>
-            </form>
-            <form>
-              <label style={{ marginRight: "10px" }} htmlFor="image">
-                Photo
-              </label>
-              <input
-                id="image"
-                name="image"
-                type="file"
-                onChange={this.handleChange}
-              ></input>
-            </form>
-          </div>
-          <div className="ingredientsetapes">
-            <div className="ingredients">
-              {this.state.ingredients.length > 0 ? (
+            <div className="ingredientsetapes">
+              <div className="ingredients">
                 <h3 style={{ marginBottom: "15px" }}>Ingrédients</h3>
-              ) : null}
-              <ul>
-                {this.state.ingredients
-                  ? this.state.ingredients.map((ing, index) => {
+
+                <ul>
+                  {this.state.ingredients.length > 0 ? (
+                    this.state.ingredients.map((ing, index) => {
                       return (
                         <div className="ingredient" key={index}>
                           <p>{ing[0].toUpperCase() + ing.substring(1)}</p>
-                          <button
+                          <a
                             className="removebtn"
                             onClick={() => this.handleRemove(ing)}
                           >
-                            x
-                          </button>
+                            X
+                          </a>
                         </div>
                       );
                     })
-                  : null}
-              </ul>
-            </div>
-            <div className="etapes">
+                  ) : (
+                    <div>Pas d'ingredients ajoutés pour le moment..</div>
+                  )}
+                </ul>
+              </div>
+
               <div className="etapes">
-                {this.state.etapes.length > 0 ? (
-                  <h3 style={{ marginBottom: "15px" }}>Etapes</h3>
-                ) : null}
+                <h3 style={{ marginBottom: "15px" }}>Etapes</h3>
+
                 <ol>
-                  {this.state.etapes ? (
+                  {this.state.etapes.length > 0 ? (
                     this.state.etapes.map((ing, index) => {
                       return (
                         <div className="etape" key={index}>
                           <li>{ing[0].toUpperCase() + ing.substring(1)}</li>
-                          <button
+                          <a
                             className="removebtn"
                             onClick={() => this.handleRemoveSteps(ing)}
                           >
                             x
-                          </button>
+                          </a>
                         </div>
                       );
                     })
                   ) : (
                     <div>
-                      <p>pas d'ingredients pour le moment</p>
+                      <p>Pas d'étapes ajoutées pour le moment..</p>
                     </div>
                   )}
                 </ol>
               </div>
+              {this.state.file !== null && (
+                <img
+                  style={{ width: "300px", height: "auto" }}
+                  src={this.state.file}
+                  alt="recipeimage"
+                />
+              )}
             </div>
           </div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <button onClick={this.handleSubmit} className="btncreateform">
+              Ajouter la recette !
+            </button>
+          </div>
         </div>
-        <button onClick={this.handleSubmit} className="btncreateform">
-          Enregistrer la recette !
-        </button>
       </div>
     );
   }
