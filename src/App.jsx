@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import Recipes from "./pages/Recipes";
 import OneRecipe from "./components/OneRecipe";
 import FormCreate from "./components/Forms/FormCreate";
+import Desserts from "./pages/Desserts";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/recipes" component={Recipes} />
+        <Route exact path="/desserts" component={Desserts} />
         <Route exact path="/recipes/create" component={FormCreate} />
         <Route exact path="/recipes/:id" component={OneRecipe} />
         <ProtectedRoute exact path="/profile" component={Profile} />

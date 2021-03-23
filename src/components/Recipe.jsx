@@ -17,6 +17,7 @@ function Recipe(recette) {
         className="recipe-card"
       >
         <h3>{recette.name}</h3>
+        <p className="recipetype">{recette.type}</p>
       </div>
     </NavLink>
   );

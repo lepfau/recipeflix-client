@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico:wght@200;300;400;500;600;700;800&display=swap");
+
 .recettes {
   display: flex;
   flex-direction: column;
@@ -9,8 +11,10 @@
 .recettes-title {
   color: red;
   text-align: center;
-  margin: 30px;
-  font-size: 3em;
+  margin: 20px;
+  font-size: 4em;
+  font-family: Pacifico;
+  font-weight: 200;
 }
 
 .recipe-card {
@@ -35,7 +39,7 @@
 }
 
 .searchbar {
-  width: 50vh;
+  width: 30vh;
   height: 40px;
   border: none;
   border-radius: 25px;
@@ -53,19 +57,24 @@
   display: flex;
   align-items: flex-start;
   margin-top: 50px;
+
+  justify-content: space-evenly;
 }
 
 .leftfilters {
-  width: 15%;
+  width: 25%;
+  margin-left: 20px;
 }
 
 .container {
-  width: 85%;
+  width: 75%;
 }
 
 .recipe-card {
   position: relative;
   transition: transform 500ms;
+  display: flex;
+  justify-content: space-between;
 }
 
 .recipe-container .recipe-card:focus,
@@ -77,4 +86,82 @@
 .recipe-image {
   display: block;
   width: 150px;
+}
+
+.recipetype {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 180px;
+}
+
+.filters {
+  margin-top: 20px;
+}
+
+.filterrecipe {
+  margin: 20px;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: green;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px black;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }

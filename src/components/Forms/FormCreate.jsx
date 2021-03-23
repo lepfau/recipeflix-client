@@ -14,7 +14,7 @@ class FormCreate extends Component {
     temps: 0,
     ingredients: [],
     image:
-      "http://lesbonsplansdelili.com/wp-content/uploads/2020/06/pates-ingredients-cuisine_23-2147749530-2.jpg",
+      "https://embed.widencdn.net/img/mccormick/sdhnxonw1b/1367x1367px/one%20skillet%20beef%20stir%20fry%20recipe7432.jpg?crop=true&anchor=323,0&q=80&color=ffffffff&u=kzvrjj",
     vegan: false,
     vegetarian: false,
     gluten: false,
