@@ -31,7 +31,14 @@ class FormCreate extends Component {
       event.target.type === "file" ? event.target.files[0] : event.target.value;
     this.setState({
       [key]: value,
+    });
+  };
+
+  handleChangeFile = (event) => {
+    event.preventDefault();
+    this.setState({
       file: URL.createObjectURL(event.target.files[0]),
+      image: event.target.files[0],
     });
   };
 
@@ -242,7 +249,7 @@ class FormCreate extends Component {
                   id="image"
                   name="image"
                   type="file"
-                  onChange={this.handleChange}
+                  onChange={this.handleChangeFile}
                 ></input>
               </form>
             </div>
