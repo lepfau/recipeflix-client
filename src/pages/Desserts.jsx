@@ -4,6 +4,8 @@ import Recipe from "../components/Recipe";
 import Searchbar from "../components/Searchbar";
 import { NavLink } from "react-router-dom";
 import SimpleMenu from "../components/SimpleMenu";
+import { motion } from "framer-motion";
+
 function Desserts(props) {
   const [recettes, setRecettes] = useState([]);
   const [filtered, setFiltered] = useState([]);
@@ -109,111 +111,108 @@ function Desserts(props) {
   }
 
   return (
-    <div className="recettes">
-      <div className="recettes-title-menu">
-        <h1 className="recettes-title">Les Desserts </h1>
-        <SimpleMenu />
-        {/* <NavLink exact to={"/desserts"}>
-        <p onClick={handleCat} style={{ color: "white" }}>
-          * Desserts
-        </p>
-      </NavLink> */}
-      </div>
-      <div className="pageelements">
-        <div className="leftfilters">
-          <Searchbar handleSearch={handleSearch} />
-          <div className="filters">
-            <div className="filterrecipe">
-              <label
-                style={{ color: "white" }}
-                htmlFor="vegan"
-                className="switch"
-              >
-                <input
-                  id="vegan"
-                  type="checkbox"
-                  checked={vegan}
-                  name="vegan"
-                  onChange={(event) => handleChange(event, setVegan)}
-                ></input>
-                <span className="slider round"></span>
-              </label>
-              <span style={{ color: "white" }}>Vegan</span>
-            </div>
+    <motion.div exit={{ opacity: 0 }}>
+      <div className="recettes">
+        <div className="recettes-title-menu">
+          <h1 className="recettes-title">Les Desserts </h1>
+          <SimpleMenu />
+        </div>
+        <div className="pageelements">
+          <div className="leftfilters">
+            <Searchbar handleSearch={handleSearch} />
+            <div className="filters">
+              <div className="filterrecipe">
+                <label
+                  style={{ color: "white" }}
+                  htmlFor="vegan"
+                  className="switch"
+                >
+                  <input
+                    id="vegan"
+                    type="checkbox"
+                    checked={vegan}
+                    name="vegan"
+                    onChange={(event) => handleChange(event, setVegan)}
+                  ></input>
+                  <span className="slider round"></span>
+                </label>
+                <span style={{ color: "white" }}>Vegan</span>
+              </div>
 
-            <div className="filterrecipe">
-              <label
-                style={{ color: "white" }}
-                htmlFor="vegetarien"
-                className="switch"
-              >
-                <input
-                  id="vegetarien"
-                  type="checkbox"
-                  checked={vegetarien}
-                  name="vegetarien"
-                  onChange={(event) => handleChange(event, setVegetarien)}
-                ></input>
-                <span className="slider round"></span>
-              </label>
-              <span style={{ color: "white" }}>Vegetarien</span>
-            </div>
+              <div className="filterrecipe">
+                <label
+                  style={{ color: "white" }}
+                  htmlFor="vegetarien"
+                  className="switch"
+                >
+                  <input
+                    id="vegetarien"
+                    type="checkbox"
+                    checked={vegetarien}
+                    name="vegetarien"
+                    onChange={(event) => handleChange(event, setVegetarien)}
+                  ></input>
+                  <span className="slider round"></span>
+                </label>
+                <span style={{ color: "white" }}>Vegetarien</span>
+              </div>
 
-            <div className="filterrecipe">
-              <label
-                style={{ color: "white" }}
-                htmlFor="lactose"
-                className="switch"
-              >
-                <input
-                  id="lactose"
-                  type="checkbox"
-                  checked={lactose}
-                  name="lactose"
-                  onChange={(event) => handleChange(event, setLactose)}
-                ></input>
-                <span className="slider round"></span>
-              </label>
-              <span style={{ color: "white" }}>Sans lactose</span>
-            </div>
+              <div className="filterrecipe">
+                <label
+                  style={{ color: "white" }}
+                  htmlFor="lactose"
+                  className="switch"
+                >
+                  <input
+                    id="lactose"
+                    type="checkbox"
+                    checked={lactose}
+                    name="lactose"
+                    onChange={(event) => handleChange(event, setLactose)}
+                  ></input>
+                  <span className="slider round"></span>
+                </label>
+                <span style={{ color: "white" }}>Sans lactose</span>
+              </div>
 
-            <div className="filterrecipe">
-              <label
-                style={{ color: "white" }}
-                htmlFor="gluten"
-                className="switch"
-              >
-                <input
-                  id="gluten"
-                  type="checkbox"
-                  checked={gluten}
-                  name="gluten"
-                  onChange={(event) => handleChange(event, setGluten)}
-                ></input>
-                <span className="slider round"></span>
-              </label>
-              <span style={{ color: "white" }}>Sans gluten</span>
+              <div className="filterrecipe">
+                <label
+                  style={{ color: "white" }}
+                  htmlFor="gluten"
+                  className="switch"
+                >
+                  <input
+                    id="gluten"
+                    type="checkbox"
+                    checked={gluten}
+                    name="gluten"
+                    onChange={(event) => handleChange(event, setGluten)}
+                  ></input>
+                  <span className="slider round"></span>
+                </label>
+                <span style={{ color: "white" }}>Sans gluten</span>
+              </div>
+            </div>
+          </div>
+          <div className="container">
+            <div className="recipe-container">
+              {recettes.map((recette) => {
+                return (
+                  <Recipe
+                    key={recette._id}
+                    name={recette.name}
+                    image={recette.image}
+                    id={recette._id}
+                    type={recette.type}
+                    temps={recette.temps}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>
-        <div className="container">
-          <div className="recipe-container">
-            {recettes.map((recette) => {
-              return (
-                <Recipe
-                  key={recette._id}
-                  name={recette.name}
-                  image={recette.image}
-                  id={recette._id}
-                  type={recette.type}
-                  temps={recette.temps}
-                />
-              );
-            })}
-          </div>
-        </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

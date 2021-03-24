@@ -18,3 +18,11 @@ a {
 body {
   background-color: #141414;
 }
+
+.switch-wrapper {
+  position: relative;
+}
+
+.switch-wrapper > div {
+  position: relative;
+}

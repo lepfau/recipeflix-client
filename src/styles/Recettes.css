@@ -3,7 +3,6 @@
 .recettes {
   display: flex;
   flex-direction: column;
-
   justify-content: center;
   background-color: #141414;
 }
