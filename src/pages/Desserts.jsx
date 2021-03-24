@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import apiHandler from "../api/apiHandler";
 import Recipe from "../components/Recipe";
 import Searchbar from "../components/Searchbar";
-
-function Recipes(props) {
+import { NavLink } from "react-router-dom";
+import SimpleMenu from "../components/SimpleMenu";
+function Desserts(props) {
   const [recettes, setRecettes] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [vegan, setVegan] = useState(false);
@@ -75,17 +76,31 @@ function Recipes(props) {
   }
 
   function handleSearch(inputsearch) {
-    apiHandler
-      .getRecipes()
-      .then((resp) => {
-        let arr = resp.filter((rec) =>
-          rec.name.toLowerCase().includes(inputsearch.toLowerCase())
-        );
-        setRecettes(arr);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    let search = [...recettes];
+    if (inputsearch.length > 0) {
+      apiHandler
+        .getRecipes()
+        .then((resp) => {
+          let arr = resp
+            .filter((rec) =>
+              rec.name.toLowerCase().includes(inputsearch.toLowerCase())
+            )
+            .filter((rec) => rec.type === "dessert");
+          handlefilter(arr);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      apiHandler
+        .getRecipes()
+        .then((resp) => {
+          handlefilter(resp.filter((rec) => rec.type === "dessert"));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }
 
   function handleCat() {
@@ -95,60 +110,90 @@ function Recipes(props) {
 
   return (
     <div className="recettes">
-      <h1 className="recettes-title">Les Desserts </h1>
-      <Searchbar handleSearch={handleSearch} />
-      <p onClick={handleCat} style={{ color: "white" }}>
-        Desserts
-      </p>
+      <div className="recettes-title-menu">
+        <h1 className="recettes-title">Les Desserts </h1>
+        <SimpleMenu />
+        {/* <NavLink exact to={"/desserts"}>
+        <p onClick={handleCat} style={{ color: "white" }}>
+          * Desserts
+        </p>
+      </NavLink> */}
+      </div>
       <div className="pageelements">
         <div className="leftfilters">
-          <div className="filterrecipe">
-            <label style={{ color: "white" }} htmlFor="vegan">
-              Vegan
-            </label>
-            <input
-              id="vegan"
-              type="checkbox"
-              checked={vegan}
-              name="vegan"
-              onChange={(event) => handleChange(event, setVegan)}
-            ></input>
-          </div>
-          <div className="filterrecipe">
-            <label style={{ color: "white" }} htmlFor="vegetarien">
-              Vegetarien
-            </label>
-            <input
-              id="vegetarien"
-              type="checkbox"
-              checked={vegetarien}
-              name="vegetarien"
-              onChange={(event) => handleChange(event, setVegetarien)}
-            ></input>
-          </div>
-          <div className="filterrecipe">
-            <label style={{ color: "white" }} htmlFor="lactose">
-              Sans Lactose
-            </label>
-            <input
-              id="lactose"
-              type="checkbox"
-              checked={lactose}
-              name="lactose"
-              onChange={(event) => handleChange(event, setLactose)}
-            ></input>
-          </div>
-          <div className="filterrecipe">
-            <label style={{ color: "white" }} htmlFor="gluten">
-              Sans Gluten
-            </label>
-            <input
-              id="gluten"
-              type="checkbox"
-              checked={gluten}
-              name="gluten"
-              onChange={(event) => handleChange(event, setGluten)}
-            ></input>
+          <Searchbar handleSearch={handleSearch} />
+          <div className="filters">
+            <div className="filterrecipe">
+              <label
+                style={{ color: "white" }}
+                htmlFor="vegan"
+                className="switch"
+              >
+                <input
+                  id="vegan"
+                  type="checkbox"
+                  checked={vegan}
+                  name="vegan"
+                  onChange={(event) => handleChange(event, setVegan)}
+                ></input>
+                <span className="slider round"></span>
+              </label>
+              <span style={{ color: "white" }}>Vegan</span>
+            </div>
+
+            <div className="filterrecipe">
+              <label
+                style={{ color: "white" }}
+                htmlFor="vegetarien"
+                className="switch"
+              >
+                <input
+                  id="vegetarien"
+                  type="checkbox"
+                  checked={vegetarien}
+                  name="vegetarien"
+                  onChange={(event) => handleChange(event, setVegetarien)}
+                ></input>
+                <span className="slider round"></span>
+              </label>
+              <span style={{ color: "white" }}>Vegetarien</span>
+            </div>
+
+            <div className="filterrecipe">
+              <label
+                style={{ color: "white" }}
+                htmlFor="lactose"
+                className="switch"
+              >
+                <input
+                  id="lactose"
+                  type="checkbox"
+                  checked={lactose}
+                  name="lactose"
+                  onChange={(event) => handleChange(event, setLactose)}
+                ></input>
+                <span className="slider round"></span>
+              </label>
+              <span style={{ color: "white" }}>Sans lactose</span>
+            </div>
+
+            <div className="filterrecipe">
+              <label
+                style={{ color: "white" }}
+                htmlFor="gluten"
+                className="switch"
+              >
+                <input
+                  id="gluten"
+                  type="checkbox"
+                  checked={gluten}
+                  name="gluten"
+                  onChange={(event) => handleChange(event, setGluten)}
+                ></input>
+                <span className="slider round"></span>
+              </label>
+              <span style={{ color: "white" }}>Sans gluten</span>
+            </div>
           </div>
         </div>
         <div className="container">
@@ -160,6 +205,8 @@ function Recipes(props) {
                   name={recette.name}
                   image={recette.image}
                   id={recette._id}
+                  type={recette.type}
+                  temps={recette.temps}
                 />
               );
             })}
@@ -170,4 +217,4 @@ function Recipes(props) {
   );
 }
 
-export default Recipes;
+export default Desserts;

@@ -4,7 +4,7 @@ import Recipe from "../components/Recipe";
 import Searchbar from "../components/Searchbar";
 import { NavLink } from "react-router-dom";
 import SimpleMenu from "../components/SimpleMenu";
-function Recipes(props) {
+function Plats(props) {
   const [recettes, setRecettes] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [vegan, setVegan] = useState(false);
@@ -46,14 +46,14 @@ function Recipes(props) {
         resp.filter((rec) => rec.lactose === true || rec.vegan === true)
       );
     else if (gluten) setRecettes(resp.filter((rec) => rec.gluten === true));
-    else setRecettes(resp);
+    else setRecettes(resp.filter((rec) => rec.type === "plat"));
   }
 
   useEffect(() => {
     apiHandler
       .getRecipes()
       .then((resp) => {
-        setRecettes(resp);
+        setRecettes(resp.filter((rec) => rec.type === "plat"));
       })
       .catch((err) => {
         console.log(err);
@@ -64,7 +64,7 @@ function Recipes(props) {
     apiHandler
       .getRecipes()
       .then((resp) => {
-        handlefilter(resp);
+        handlefilter(resp.filter((rec) => rec.type === "plat"));
       })
       .catch((err) => {
         console.log(err);
@@ -81,9 +81,12 @@ function Recipes(props) {
       apiHandler
         .getRecipes()
         .then((resp) => {
-          let arr = resp.filter((rec) =>
-            rec.name.toLowerCase().includes(inputsearch.toLowerCase())
-          );
+          let arr = resp
+            .filter((rec) =>
+              rec.name.toLowerCase().includes(inputsearch.toLowerCase())
+            )
+            .filter((rec) => rec.type === "plat");
+
           handlefilter(arr);
         })
         .catch((err) => {
@@ -93,7 +96,7 @@ function Recipes(props) {
       apiHandler
         .getRecipes()
         .then((resp) => {
-          handlefilter(resp);
+          handlefilter(resp.filter((rec) => rec.type === "plat"));
         })
         .catch((err) => {
           console.log(err);
@@ -103,14 +106,15 @@ function Recipes(props) {
 
   function handleCat() {
     let cat = [...recettes];
-    setRecettes(cat.filter((rec) => rec.type === "dessert"));
+    setRecettes(cat.filter((rec) => rec.type === "plat"));
   }
 
   return (
     <div className="recettes">
       <div className="recettes-title-menu">
-        <h1 className="recettes-title">Les Recettes </h1>
+        <h1 className="recettes-title">Les Plats</h1>
         <SimpleMenu />
+
         {/* <NavLink exact to={"/desserts"}>
         <p onClick={handleCat} style={{ color: "white" }}>
           * Desserts
@@ -215,4 +219,4 @@ function Recipes(props) {
   );
 }
 
-export default Recipes;
+export default Plats;

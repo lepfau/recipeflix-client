@@ -17,6 +17,10 @@ function Searchbar(props) {
 
   return (
     <form onSubmit={handleSubmit}>
+      <i
+        style={{ color: "white", marginRight: "10px" }}
+        className="fas fa-search"
+      ></i>
       <input
         onChange={handleChange}
         type="search"

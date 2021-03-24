@@ -17,7 +17,12 @@ function Recipe(recette) {
         className="recipe-card"
       >
         <h3>{recette.name}</h3>
-        <p className="recipetype">{recette.type}</p>
+        <div>
+          <p className="recipetype">{recette.type}</p>
+          <p>
+            <i class="far fa-clock"></i> {recette.temps} min
+          </p>
+        </div>
       </div>
     </NavLink>
   );

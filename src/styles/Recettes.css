@@ -11,9 +11,8 @@
 .recettes-title {
   color: red;
   text-align: center;
-  margin: 20px;
-  font-size: 4em;
-  font-family: Pacifico;
+  margin: 15px;
+  font-size: 3.2em;
   font-weight: 200;
 }
 
@@ -56,8 +55,7 @@
 .pageelements {
   display: flex;
   align-items: flex-start;
-  margin-top: 50px;
-
+  margin-top: 15px;
   justify-content: space-evenly;
 }
 
@@ -164,4 +162,18 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.recettes-title-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-menu span {
+  color: white;
+}
+
+.dropdownmenu {
+  margin-right: 50px;
 }
