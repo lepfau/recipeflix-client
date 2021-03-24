@@ -75,24 +75,30 @@ function Recipes(props) {
     event.target.checked ? filter(true) : filter(false);
   }
 
-  function usePrevious(value) {
-    const ref = useRef();
-    useEffect(() => {
-      ref.current = value;
-    });
-    return ref.current;
-  }
-
-  const prev = usePrevious(recettes);
-
   function handleSearch(inputsearch) {
+    let search = [...recettes];
     if (inputsearch.length > 0) {
-      let search = [...recettes];
-      let arr = search.filter((rec) =>
-        rec.name.toLowerCase().includes(inputsearch.toLowerCase())
-      );
-      setRecettes(arr);
-    } else setRecettes(prev);
+      apiHandler
+        .getRecipes()
+        .then((resp) => {
+          let arr = resp.filter((rec) =>
+            rec.name.toLowerCase().includes(inputsearch.toLowerCase())
+          );
+          handlefilter(arr);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      apiHandler
+        .getRecipes()
+        .then((resp) => {
+          handlefilter(resp);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }
 
   function handleCat() {
