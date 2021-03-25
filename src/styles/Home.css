@@ -1,8 +1,4 @@
 .homepage {
-  background-image: url("https://wallpaperaccess.com/full/1306571.jpg");
-  background-position: 0 0;
-  background-repeat: no-repeat;
-  background-size: cover;
   min-height: 95vh;
   width: 100%;
   position: relative;
@@ -12,10 +8,20 @@
 }
 
 .homepage-title {
-  color: white;
+  color: red;
   font-size: 3em;
   text-shadow: 8px 8px 16px black;
-  margin-top: 90px;
+  margin-top: 15px;
+  font-weight: 200;
+  margin-bottom: 30px;
+}
+
+.homepage-subtitle {
+  color: white;
+  align-self: center;
+  margin-top: 60px;
+  margin-bottom: 30px;
+  font-size: 1.5em;
 }
 
 .homepage-links {
@@ -44,4 +50,20 @@
 .wholehomepage {
   display: flex;
   justify-content: center;
+}
+
+.homepage-recipe-container {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-around;
+}
+
+.homepagerecipecard {
+  height: 150px;
+  width: 200px;
+}
+
+.active {
+  color: red;
 }

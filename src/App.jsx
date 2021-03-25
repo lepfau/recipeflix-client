@@ -31,7 +31,7 @@ function App() {
           <Route exact path="/plats" component={Plats} />
           <Route exact path="/snacks" component={Snacks} />
           <Route exact path="/entrees" component={Entrees} />
-          <Route exact path="/recipes/create" component={FormCreate} />
+          <ProtectedRoute exact path="/create" component={FormCreate} />
           <Route exact path="/recipes/:id" component={OneRecipe} />
           <ProtectedRoute exact path="/profile" component={Profile} />
         </Switch>

@@ -130,24 +130,8 @@ class FormCreate extends Component {
     return (
       <motion.div exit={{ opacity: 0 }}>
         <div className="wholepage">
+          <h1 className="recettes-title">Ajouter une recette</h1>
           <div className="wholepagecreate">
-            <h1
-              style={{
-                color: "white",
-                width: "80%",
-                fontSize: "3.5em",
-                backgroundColor: "red",
-                position: "fixed",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                textAlign: "center",
-              }}
-            >
-              {this.state.httpResponse && this.state.httpResponse.message}
-            </h1>
-            <h1 className="formcreate-title">Ajouter une recette</h1>
-
             <div className="formcontainer">
               <div className="fieldscreateform">
                 <div className="inputlabelscreate">
@@ -218,7 +202,7 @@ class FormCreate extends Component {
                       ></input>
                     </div>
                     <div className="labelinput-vegan">
-                      <label htmlFor="vegetarian">Vegetarian</label>
+                      <label htmlFor="vegetarian">Vegetarien</label>
                       <input
                         onChange={this.handleCheck}
                         type="checkbox"
@@ -310,7 +294,7 @@ class FormCreate extends Component {
                 </div>
                 {this.state.file !== null && (
                   <img
-                    style={{ width: "150px", height: "auto" }}
+                    style={{ width: "350px", height: "auto" }}
                     src={this.state.file}
                     alt="recipeimage"
                   />

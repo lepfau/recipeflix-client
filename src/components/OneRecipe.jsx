@@ -10,7 +10,7 @@ function OneRecipe(props) {
   const [rate, setRate] = useState([]);
   const [rating, setRating] = useState({
     id_recipe: props.match.params.id,
-    note: 1,
+    note: 3,
   });
   const [value, setValue] = useState(2);
 
@@ -52,22 +52,6 @@ function OneRecipe(props) {
   return (
     <motion.div exit={{ opacity: 0 }}>
       <div className="onerecipepage">
-        <div>
-          <Box component="fieldset" mb={3} borderColor="transparent">
-            <Typography component="legend"></Typography>
-            <Rating
-              name="simple-controlled"
-              value={rating.note}
-              onChange={(event, newValue) => {
-                setRating((prevState) => ({
-                  ...prevState,
-                  note: newValue,
-                }));
-              }}
-            />
-          </Box>
-        </div>
-        <button onClick={() => addRate(rating)}>Noter la recette</button>
         <h1 className="onerecipetitle">{oneRecipe.name}</h1>
         <div className="onerecipeimagetime">
           <img className="onerecipeimage" src={oneRecipe.image} alt="img" />
@@ -105,6 +89,32 @@ function OneRecipe(props) {
                 );
               })}
           </ol>
+        </div>
+        <div
+          style={{
+            marginTop: "50px",
+            marginBottom: "100px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            alignContent: "center",
+          }}
+        >
+          <Box component="fieldset" mb={3} borderColor="transparent">
+            <Typography component="legend"></Typography>
+            <Rating
+              name="simple-controlled"
+              value={rating.note}
+              onChange={(event, newValue) => {
+                setRating((prevState) => ({
+                  ...prevState,
+                  note: newValue,
+                }));
+              }}
+            />
+          </Box>
+
+          <button onClick={() => addRate(rating)}>Noter la recette</button>
         </div>
       </div>
     </motion.div>

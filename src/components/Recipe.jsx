@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 
 function Recipe(recette) {
-  const [rate, setRate] = useState([]);
+  const [rate, setRate] = useState(0);
   const [arrlength, setArrlength] = useState(0);
 
   let image = recette.image;
@@ -16,7 +16,6 @@ function Recipe(recette) {
     apiHandler
       .getRatings()
       .then((resp) => {
-        console.log(resp);
         let arr = resp.filter((rec) => rec.id_recipe === recette.id);
 
         var val = arr.reduce(function (previousValue, currentValue) {
@@ -48,7 +47,7 @@ function Recipe(recette) {
         <div>
           <p className="recipetype">{recette.type}</p>
           <p>
-            <i class="far fa-clock"></i> {recette.temps} min
+            <i className="far fa-clock"></i> {recette.temps} min
           </p>
           <div className="stars">
             <Box component="fieldset" mb={3} borderColor="transparent">
