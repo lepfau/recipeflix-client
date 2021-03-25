@@ -63,4 +63,18 @@ export default {
       .then((res) => res.data)
       .catch(errorHandler);
   },
+
+  addRate(rateInfo) {
+    return service
+      .post("/api/ratings", rateInfo)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  getRatings() {
+    return service
+      .get("/api/ratings")
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
 };

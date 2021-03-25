@@ -57,7 +57,9 @@ function Recipes(props) {
     apiHandler
       .getRecipes()
       .then((resp) => {
+        console.log(resp);
         setRecettes(resp);
+        setLoading(false);
         setLastthree(resp.slice(Math.max(resp.length - 1, 1)));
       })
       .catch((err) => {
