@@ -4,7 +4,9 @@ import Recipe from "../components/Recipe";
 import Searchbar from "../components/Searchbar";
 import { NavLink } from "react-router-dom";
 import SimpleMenu from "../components/SimpleMenu";
-import { motion } from "framer-motion";
+import { Delay } from "../components/Delay";
+import { AnimatePresence, motion } from "framer-motion";
+
 function Recipes(props) {
   const [recettes, setRecettes] = useState([]);
   const [filtered, setFiltered] = useState([]);
@@ -115,16 +117,14 @@ function Recipes(props) {
         <div className="recettes-title-menu">
           <h1 className="recettes-title">Les Recettes </h1>
           <SimpleMenu />
-          {/* <NavLink exact to={"/desserts"}>
-        <p onClick={handleCat} style={{ color: "white" }}>
-          * Desserts
-        </p>
-      </NavLink> */}
         </div>
         <div className="pageelements">
           <div className="leftfilters">
             <Searchbar handleSearch={handleSearch} />
             <div className="filters">
+              <h3 style={{ marginLeft: "20px", color: "white" }}>
+                Filter les recettes
+              </h3>
               <div className="filterrecipe">
                 <label
                   style={{ color: "white" }}

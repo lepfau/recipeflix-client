@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
+import { AnimatePresence, motion } from "framer-motion";
 function Recipe(recette) {
   let image = recette.image;
 

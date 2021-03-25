@@ -16,37 +16,20 @@ export default function SimpleMenu(props) {
   };
 
   return (
-    <div className="dropdownmenu">
-      <Button
-        className="btn-menu"
-        aria-controls="simple-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-      >
-        Catégories
-      </Button>
-
-      <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        <NavLink exact to="/recipes">
-          <MenuItem onClick={handleClose}>Toutes les recettes</MenuItem>
-        </NavLink>
-        <NavLink exact to="/plats">
-          <MenuItem onClick={handleClose}>Plats</MenuItem>
-        </NavLink>
-        <NavLink exact to="/desserts">
-          {" "}
-          <MenuItem onClick={handleClose}>Desserts</MenuItem>
-        </NavLink>
-        <NavLink exact to="/snacks">
-          <MenuItem onClick={handleClose}>Snacks</MenuItem>
-        </NavLink>
-      </Menu>
+    <div className="menuitems">
+      <NavLink exact to="/recipes">
+        <MenuItem onClick={handleClose}>Toutes les recettes</MenuItem>
+      </NavLink>
+      <NavLink exact to="/plats">
+        <MenuItem onClick={handleClose}>Plats</MenuItem>
+      </NavLink>
+      <NavLink exact to="/desserts">
+        {" "}
+        <MenuItem onClick={handleClose}>Desserts</MenuItem>
+      </NavLink>
+      <NavLink exact to="/snacks">
+        <MenuItem onClick={handleClose}>Snacks</MenuItem>
+      </NavLink>
     </div>
   );
 }
