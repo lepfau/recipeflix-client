@@ -57,6 +57,15 @@ export default {
       .catch(errorHandler);
   },
 
+  deleteRecipe(itemId) {
+    return service
+      .delete("/api/recipes/" + itemId)
+      .then(() => {
+        console.log("successfully deleted");
+      })
+      .catch(errorHandler);
+  },
+
   getOneRecipe(id) {
     return service
       .get(`/api/recipes/${id}`)
