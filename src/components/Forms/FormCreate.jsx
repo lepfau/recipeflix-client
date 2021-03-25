@@ -176,9 +176,10 @@ class FormCreate extends Component {
                       onChange={this.handleChange}
                       value={this.state.type}
                     >
-                      <option value="snack">Snack</option>
+                      <option value="entrée">Entrée</option>
                       <option value="plat">Plat</option>
                       <option value="dessert">Dessert</option>
+                      <option value="snack">Snack</option>
                       <option value="autre">Autre</option>
                     </select>
                   </form>

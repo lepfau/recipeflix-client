@@ -20,6 +20,9 @@ export default function SimpleMenu(props) {
       <NavLink exact to="/recipes">
         <MenuItem onClick={handleClose}>Toutes les recettes</MenuItem>
       </NavLink>
+      <NavLink exact to="/entrees">
+        <MenuItem onClick={handleClose}>Entrées</MenuItem>
+      </NavLink>
       <NavLink exact to="/plats">
         <MenuItem onClick={handleClose}>Plats</MenuItem>
       </NavLink>

@@ -192,7 +192,6 @@ input:checked + .slider:before {
 }
 
 .MuiMenuItem-root {
-  border-radius: 50px;
 }
 
 .onerecipepage {
