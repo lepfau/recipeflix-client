@@ -113,19 +113,19 @@ function Entrees(props) {
   return (
     <motion.div exit={{ opacity: 0 }}>
       <div className="recettes">
-        <div className="recettes-title-menu">
-          <h1 className="recettes-title">Les Plats</h1>
-          <SimpleMenu />
-
-          {/* <NavLink exact to={"/desserts"}>
-        <p onClick={handleCat} style={{ color: "white" }}>
-          * Desserts
-        </p>
-      </NavLink> */}
+        <div className="main-recettes">
+          <div className="recettes-title-menu">
+            <h1 className="recettes-title">Les Recettes </h1>
+            <SimpleMenu />
+          </div>
+          <Searchbar handleSearch={handleSearch} />
         </div>
         <div className="pageelements">
           <div className="leftfilters">
-            <Searchbar handleSearch={handleSearch} />
+            {" "}
+            <h3 style={{ marginLeft: "20px", color: "white" }}>
+              Filter les recettes
+            </h3>
             <div className="filters">
               <div className="filterrecipe">
                 <label

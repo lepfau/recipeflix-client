@@ -8,41 +8,14 @@ import Box from "@material-ui/core/Box";
 function OneRecipe(props) {
   const [oneRecipe, setoneRecipe] = useState([]);
   const [rate, setRate] = useState([]);
-  const [rating, setRating] = useState({
-    id_recipe: props.match.params.id,
-    note: 3,
-  });
+  const [rating, setRating] = useState({});
   const [value, setValue] = useState(2);
-
-  function addRate(rating) {
-    apiHandler.addRate(rating).then((res) => {
-      console.log(res);
-    });
-  }
 
   useEffect(() => {
     apiHandler
       .getOneRecipe(props.match.params.id)
       .then((resp) => {
         setoneRecipe(resp);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  useEffect(() => {
-    apiHandler
-      .getRatings()
-      .then((resp) => {
-        let arr = resp.filter((rec) => rec.id_recipe === props.match.params.id);
-        var val = arr.reduce(function (previousValue, currentValue) {
-          return {
-            note: previousValue.note + currentValue.note,
-          };
-        });
-
-        setRate(val.note / arr.length);
       })
       .catch((err) => {
         console.log(err);
@@ -89,32 +62,6 @@ function OneRecipe(props) {
                 );
               })}
           </ol>
-        </div>
-        <div
-          style={{
-            marginTop: "50px",
-            marginBottom: "100px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            alignContent: "center",
-          }}
-        >
-          <Box component="fieldset" mb={3} borderColor="transparent">
-            <Typography component="legend"></Typography>
-            <Rating
-              name="simple-controlled"
-              value={rating.note}
-              onChange={(event, newValue) => {
-                setRating((prevState) => ({
-                  ...prevState,
-                  note: newValue,
-                }));
-              }}
-            />
-          </Box>
-
-          <button onClick={() => addRate(rating)}>Noter la recette</button>
         </div>
       </div>
     </motion.div>

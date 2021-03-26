@@ -43,7 +43,7 @@ function Home(props) {
             <NavLink to="/recipes" className="homepage-link">
               Les recettes
             </NavLink>
-            <NavLink to="/recipes/create" className="homepage-link">
+            <NavLink to="/create" className="homepage-link">
               Ajouter une recette
             </NavLink>
           </div>

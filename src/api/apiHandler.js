@@ -72,7 +72,12 @@ export default {
       .then((res) => res.data)
       .catch(errorHandler);
   },
-
+  getRatings() {
+    return service
+      .get("/api/ratings")
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
   addRate(rateInfo) {
     return service
       .post("/api/ratings", rateInfo)
@@ -80,10 +85,10 @@ export default {
       .catch(errorHandler);
   },
 
-  getRatings() {
+  getUserRecipe(filter) {
     return service
-      .get("/api/ratings")
-      .then((res) => res.data)
+      .get(`/api/recipes/`)
+      .then((res) => res.data.filter((rec) => rec.id_user._id === filter))
       .catch(errorHandler);
   },
 };

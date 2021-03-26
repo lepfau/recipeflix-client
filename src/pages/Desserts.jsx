@@ -113,14 +113,20 @@ function Desserts(props) {
   return (
     <motion.div exit={{ opacity: 0 }}>
       <div className="recettes">
-        <div className="recettes-title-menu">
-          <h1 className="recettes-title">Les Desserts </h1>
-          <SimpleMenu />
+        <div className="main-recettes">
+          <div className="recettes-title-menu">
+            <h1 className="recettes-title">Les Recettes </h1>
+            <SimpleMenu />
+          </div>
+          <Searchbar handleSearch={handleSearch} />
         </div>
         <div className="pageelements">
           <div className="leftfilters">
-            <Searchbar handleSearch={handleSearch} />
             <div className="filters">
+              {" "}
+              <h3 style={{ marginLeft: "20px", color: "white" }}>
+                Filter les recettes
+              </h3>
               <div className="filterrecipe">
                 <label
                   style={{ color: "white" }}
@@ -138,7 +144,6 @@ function Desserts(props) {
                 </label>
                 <span style={{ color: "white" }}>Vegan</span>
               </div>
-
               <div className="filterrecipe">
                 <label
                   style={{ color: "white" }}
@@ -156,7 +161,6 @@ function Desserts(props) {
                 </label>
                 <span style={{ color: "white" }}>Vegetarien</span>
               </div>
-
               <div className="filterrecipe">
                 <label
                   style={{ color: "white" }}
@@ -174,7 +178,6 @@ function Desserts(props) {
                 </label>
                 <span style={{ color: "white" }}>Sans lactose</span>
               </div>
-
               <div className="filterrecipe">
                 <label
                   style={{ color: "white" }}

@@ -8,9 +8,9 @@ const Profile = (props) => {
 
   useEffect(() => {
     apiHandler
-      .getRecipes()
+      .getUserRecipe(props.context.user._id)
       .then((resp) => {
-        console.log(props.context.user._id);
+        console.log(resp);
         setRecipes(resp);
       })
       .catch((err) => {
@@ -27,29 +27,44 @@ const Profile = (props) => {
   return (
     <div>
       <h1 className="recettes-title">Mon profil</h1>
-      <h2 style={{ color: "white" }}>Mes recettes ajoutées</h2>
-      {recipes
-        .filter((rec) => rec.id_user._id === props.context.user._id)
-        .map((recette) => {
+      <h2 style={{ color: "white", marginBottom: "40px" }}>
+        Mes recettes ajoutées
+      </h2>
+      <div className="recipe-container" style={{ marginLeft: "50px" }}>
+        {recipes.map((recette) => {
           return (
-            <div style={{ display: "flex" }}>
-              <Recipe
-                key={recette._id}
-                name={recette.name}
-                image={recette.image}
-                id={recette._id}
-                type={recette.type}
-                temps={recette.temps}
-              />
-              <p
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <div style={{ display: "flex" }} key={recette._id}>
+                <Recipe
+                  key={recette._id}
+                  name={recette.name}
+                  image={recette.image}
+                  id={recette._id}
+                  type={recette.type}
+                  temps={recette.temps}
+                />
+              </div>
+              <i
+                class="fas fa-trash"
+                style={{
+                  color: "white",
+                  cursor: "pointer",
+                  marginBottom: "20px",
+                  marginTop: "15px",
+                }}
                 onClick={() => handleDelete(recette._id)}
-                style={{ color: "white" }}
-              >
-                Supprimer
-              </p>
+              ></i>
             </div>
           );
         })}
+      </div>
     </div>
   );
 };

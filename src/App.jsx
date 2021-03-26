@@ -6,7 +6,7 @@ import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./pages/Profile";
-import Recipes from "./pages/Recipes";
+import RecipesPage from "./pages/RecipesPage";
 import OneRecipe from "./components/OneRecipe";
 import FormCreate from "./components/Forms/FormCreate";
 import Desserts from "./pages/Desserts";
@@ -26,11 +26,11 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/signin" component={Signin} />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/recipes" component={Recipes} />
-          <Route exact path="/desserts" component={Desserts} />
-          <Route exact path="/plats" component={Plats} />
-          <Route exact path="/snacks" component={Snacks} />
-          <Route exact path="/entrees" component={Entrees} />
+          <Route exact path="/recipes" component={RecipesPage} />
+          <Route exact path="/recipes/desserts" component={Desserts} />
+          <Route exact path="/recipes/plats" component={Plats} />
+          <Route exact path="/recipes/snacks" component={Snacks} />
+          <Route exact path="/recipes/entrees" component={Entrees} />
           <ProtectedRoute exact path="/create" component={FormCreate} />
           <Route exact path="/recipes/:id" component={OneRecipe} />
           <ProtectedRoute exact path="/profile" component={Profile} />
