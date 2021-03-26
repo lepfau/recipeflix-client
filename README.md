@@ -19,7 +19,7 @@ My biggest progress building the app were using react hooks, handling multiple f
 
 ## Screenshots
 
-![App screenshot](./public/screenapp.png)
+![App screenshot](./public/recipeeapp.gif)
 ![Create form screenshot](./public/screencreate.png)
 
 ## Technologies
