@@ -91,4 +91,18 @@ export default {
       .then((res) => res.data.filter((rec) => rec.id_user._id === filter))
       .catch(errorHandler);
   },
+
+  getUsers() {
+    return service
+      .get("/api/auth")
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  getUserProfile() {
+    return service
+      .get("/api/auth/profile")
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
 };

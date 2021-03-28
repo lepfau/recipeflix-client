@@ -8,10 +8,10 @@ const Profile = (props) => {
 
   useEffect(() => {
     apiHandler
-      .getUserRecipe(props.context.user._id)
+      .getUserProfile()
       .then((resp) => {
-        console.log(resp);
-        setRecipes(resp);
+        console.log(resp.id_recipes);
+        setRecipes(resp.id_recipes);
       })
       .catch((err) => {
         console.log(err);
