@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import apiHandler from "../api/apiHandler";
 import { withUser } from "../components/Auth/withUser";
 import { motion } from "framer-motion";
@@ -8,14 +8,25 @@ import Box from "@material-ui/core/Box";
 
 function OneRecipe(props) {
   const [oneRecipe, setoneRecipe] = useState([]);
-  const [note, setNote] = useState({ note: 0 });
-  const [value, setValue] = React.useState(2);
+  const [note, setNote] = useState({ note: 2 });
+  const [comment, setComment] = useState({ comment: "" });
+  const [value, setValue] = React.useState(3);
+  const [ratings, setRatings] = useState([]);
+  const [noteComment, setNoteComment] = useReducer(
+    (state, newState) => ({ ...state, ...newState }),
+    {
+      note: 2,
+      comment: "",
+    }
+  );
 
   useEffect(() => {
     apiHandler
       .getOneRecipe(props.match.params.id)
       .then((resp) => {
+        console.log(resp);
         setoneRecipe(resp);
+        setRatings(resp.ratings);
       })
       .catch((err) => {
         console.log(err);
@@ -24,29 +35,30 @@ function OneRecipe(props) {
 
   function handleChange(e) {
     e.preventDefault();
-
     console.log(oneRecipe);
-    setNote({ note: e.target.value });
+    setNote({ [e.target.name]: e.target.value });
   }
+
+  const handleChangeInput = (event) => {
+    const name = event.target.name;
+    const newValue = event.target.value;
+    setNoteComment({ [name]: newValue });
+  };
 
   function handleSubmit(e) {
-    e.preventDefault();
-
-    apiHandler.addRate(props.match.params.id, note).then((resp) => {
+    apiHandler.addRate(props.match.params.id, noteComment).then((resp) => {
       console.log(resp);
     });
-  }
-
-  function handleclick() {
-    console.log(props.context.user._id);
+    apiHandler.getOneRecipe(props.match.params.id).then((resp) => {
+      setoneRecipe(resp);
+      setRatings(resp.ratings);
+    });
   }
 
   return (
     <motion.div exit={{ opacity: 0 }}>
       <div className="onerecipepage">
-        <h1 onClick={handleclick} className="onerecipetitle">
-          {oneRecipe.name}
-        </h1>
+        <h1 className="onerecipetitle">{oneRecipe.name}</h1>
         <div className="onerecipeimagetime">
           <img className="onerecipeimage" src={oneRecipe.image} alt="img" />
           <div style={{ display: "flex", justifyContent: "space-evenly" }}>
@@ -85,19 +97,38 @@ function OneRecipe(props) {
           </ol>
 
           <div>
-            <Box component="fieldset" mb={3} borderColor="transparent">
+            <Box component="fieldset" mb={1} borderColor="transparent">
               <Typography component="legend">Notez la recette !</Typography>
               <Rating
-                name="simple-controlled"
+                name="note"
                 value={value}
                 onChange={(event, newValue) => {
                   setValue(newValue);
-                  handleChange(event);
+                  handleChangeInput(event);
                 }}
               />
-              <button onClick={handleSubmit}>Submit</button>
+              <button onClick={(e) => handleSubmit(e)}>Submit</button>
             </Box>
+            <input
+              type="text"
+              name="comment"
+              onChange={handleChangeInput}
+            ></input>
           </div>
+          <br></br>
+          <br></br>
+          {ratings.map((rate) => {
+            return (
+              <div key={rate._id} style={{ display: "flex" }}>
+                <div>
+                  <Box component="fieldset" mb={3} borderColor="transparent">
+                    <Rating name="read-only" value={rate.note} readOnly />
+                  </Box>
+                </div>
+                <p> {rate.id_user.email}</p> <p>{rate.comment}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </motion.div>
