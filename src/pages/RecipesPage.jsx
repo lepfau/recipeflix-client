@@ -1,20 +1,18 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import apiHandler from "../api/apiHandler";
 import Recipe from "../components/Recipe";
 import Searchbar from "../components/Searchbar";
 import SimpleMenu from "../components/SimpleMenu";
 import { motion } from "framer-motion";
+import { withUser } from "../components/Auth/withUser";
 import Filters from "../components/Filters";
 
 function Recipes(props) {
   const [recettes, setRecettes] = useState([]);
-  const [filtered, setFiltered] = useState([]);
   const [vegan, setVegan] = useState(false);
   const [vegetarien, setVegetarien] = useState(false);
   const [lactose, setLactose] = useState(false);
   const [gluten, setGluten] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [lastthree, setLastthree] = useState([]);
 
   function handlefilter(resp) {
     if (vegan)
@@ -56,8 +54,41 @@ function Recipes(props) {
     apiHandler
       .getRecipes()
       .then((resp) => {
-        console.log(resp);
-        handlefilter(resp);
+        if (vegan)
+          setRecettes(
+            resp.filter((rec) => rec.vegan === true || rec.lactose === true)
+          );
+        else if (vegetarien && gluten)
+          setRecettes(
+            resp.filter((rec) => rec.gluten === true && rec.vegetarian === true)
+          );
+        else if (vegetarien && lactose)
+          setRecettes(
+            resp.filter(
+              (rec) => rec.lactose === true && rec.vegetarian === true
+            )
+          );
+        else if (vegetarien && lactose && gluten)
+          setRecettes(
+            resp.filter(
+              (rec) =>
+                rec.lactose === true &&
+                rec.vegetarian === true &&
+                rec.gluten === true
+            )
+          );
+        else if (lactose && gluten)
+          setRecettes(
+            resp.filter((rec) => rec.lactose === true && rec.gluten === true)
+          );
+        else if (vegetarien)
+          setRecettes(resp.filter((rec) => rec.vegetarian === true));
+        else if (lactose)
+          setRecettes(
+            resp.filter((rec) => rec.lactose === true || rec.vegan === true)
+          );
+        else if (gluten) setRecettes(resp.filter((rec) => rec.gluten === true));
+        else setRecettes(resp);
       })
       .catch((err) => {
         console.log(err);
@@ -69,7 +100,6 @@ function Recipes(props) {
   }
 
   function handleSearch(inputsearch) {
-    let search = [...recettes];
     if (inputsearch.length > 0) {
       apiHandler
         .getRecipes()
@@ -92,11 +122,6 @@ function Recipes(props) {
           console.log(err);
         });
     }
-  }
-
-  function handleCat() {
-    let cat = [...recettes];
-    setRecettes(cat.filter((rec) => rec.type === "dessert"));
   }
 
   return (
@@ -137,6 +162,7 @@ function Recipes(props) {
                     id={recette._id}
                     type={recette.type}
                     temps={recette.temps}
+                    ratings={recette.ratings}
                   />
                 );
               })}
@@ -148,4 +174,4 @@ function Recipes(props) {
   );
 }
 
-export default Recipes;
+export default withUser(Recipes);

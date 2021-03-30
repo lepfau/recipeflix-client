@@ -9,8 +9,16 @@ export default function SimpleRating(props) {
   return (
     <div>
       <Box component="fieldset" mb={3} borderColor="transparent">
-        <Typography component="legend">({props.typo} votes)</Typography>
-        <Rating name="read-only" value={props.value} readOnly />
+        <Typography component="legend">Notez la recette !</Typography>
+        <Rating
+          name="simple-controlled"
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+            props.handleChange(newValue);
+          }}
+        />
+        <button onSubmit={(e) => props.handleSubmit(e, value)}>Submit</button>
       </Box>
     </div>
   );

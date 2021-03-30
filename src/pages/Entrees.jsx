@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import apiHandler from "../api/apiHandler";
 import Recipe from "../components/Recipe";
 import Searchbar from "../components/Searchbar";
-import { NavLink } from "react-router-dom";
 import SimpleMenu from "../components/SimpleMenu";
 import { motion } from "framer-motion";
+import { withUser } from "../components/Auth/withUser";
+import Filters from "../components/Filters";
+
 function Entrees(props) {
   const [recettes, setRecettes] = useState([]);
-  const [filtered, setFiltered] = useState([]);
   const [vegan, setVegan] = useState(false);
   const [vegetarien, setVegetarien] = useState(false);
   const [lactose, setLactose] = useState(false);
   const [gluten, setGluten] = useState(false);
-  const [loading, setLoading] = useState(true);
 
   function handlefilter(resp) {
     if (vegan)
@@ -54,17 +54,8 @@ function Entrees(props) {
     apiHandler
       .getRecipes()
       .then((resp) => {
-        setRecettes(resp.filter((rec) => rec.type === "entrée"));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  useEffect(() => {
-    apiHandler
-      .getRecipes()
-      .then((resp) => {
+        console.log(props);
+        console.log(resp);
         handlefilter(resp.filter((rec) => rec.type === "entrée"));
       })
       .catch((err) => {
@@ -77,18 +68,14 @@ function Entrees(props) {
   }
 
   function handleSearch(inputsearch) {
-    let search = [...recettes];
     if (inputsearch.length > 0) {
       apiHandler
         .getRecipes()
         .then((resp) => {
-          let arr = resp
-            .filter((rec) =>
-              rec.name.toLowerCase().includes(inputsearch.toLowerCase())
-            )
-            .filter((rec) => rec.type === "entrée");
-
-          handlefilter(arr);
+          let arr = resp.filter((rec) =>
+            rec.name.toLowerCase().includes(inputsearch.toLowerCase())
+          );
+          handlefilter(arr.filter((rec) => rec.type === "entrée"));
         })
         .catch((err) => {
           console.log(err);
@@ -97,17 +84,12 @@ function Entrees(props) {
       apiHandler
         .getRecipes()
         .then((resp) => {
-          handlefilter(resp.filter((rec) => rec.type === "entrée"));
+          handlefilter(resp);
         })
         .catch((err) => {
           console.log(err);
         });
     }
-  }
-
-  function handleCat() {
-    let cat = [...recettes];
-    setRecettes(cat.filter((rec) => rec.type === "entrée"));
   }
 
   return (
@@ -122,83 +104,20 @@ function Entrees(props) {
         </div>
         <div className="pageelements">
           <div className="leftfilters">
-            {" "}
             <h3 style={{ marginLeft: "20px", color: "white" }}>
               Filter les recettes
             </h3>
-            <div className="filters">
-              <div className="filterrecipe">
-                <label
-                  style={{ color: "white" }}
-                  htmlFor="vegan"
-                  className="switch"
-                >
-                  <input
-                    id="vegan"
-                    type="checkbox"
-                    checked={vegan}
-                    name="vegan"
-                    onChange={(event) => handleChange(event, setVegan)}
-                  ></input>
-                  <span className="slider round"></span>
-                </label>
-                <span style={{ color: "white" }}>Vegan</span>
-              </div>
-
-              <div className="filterrecipe">
-                <label
-                  style={{ color: "white" }}
-                  htmlFor="vegetarien"
-                  className="switch"
-                >
-                  <input
-                    id="vegetarien"
-                    type="checkbox"
-                    checked={vegetarien}
-                    name="vegetarien"
-                    onChange={(event) => handleChange(event, setVegetarien)}
-                  ></input>
-                  <span className="slider round"></span>
-                </label>
-                <span style={{ color: "white" }}>Vegetarien</span>
-              </div>
-
-              <div className="filterrecipe">
-                <label
-                  style={{ color: "white" }}
-                  htmlFor="lactose"
-                  className="switch"
-                >
-                  <input
-                    id="lactose"
-                    type="checkbox"
-                    checked={lactose}
-                    name="lactose"
-                    onChange={(event) => handleChange(event, setLactose)}
-                  ></input>
-                  <span className="slider round"></span>
-                </label>
-                <span style={{ color: "white" }}>Sans lactose</span>
-              </div>
-
-              <div className="filterrecipe">
-                <label
-                  style={{ color: "white" }}
-                  htmlFor="gluten"
-                  className="switch"
-                >
-                  <input
-                    id="gluten"
-                    type="checkbox"
-                    checked={gluten}
-                    name="gluten"
-                    onChange={(event) => handleChange(event, setGluten)}
-                  ></input>
-                  <span className="slider round"></span>
-                </label>
-                <span style={{ color: "white" }}>Sans gluten</span>
-              </div>
-            </div>
+            <Filters
+              handleChange={handleChange}
+              vegan={vegan}
+              setVegan={setVegan}
+              vegetarien={vegetarien}
+              setVegetarien={setVegetarien}
+              lactose={lactose}
+              setLactose={setLactose}
+              gluten={gluten}
+              setGluten={setGluten}
+            />
           </div>
           <div className="container">
             <div className="recipe-container">
@@ -211,6 +130,7 @@ function Entrees(props) {
                     id={recette._id}
                     type={recette.type}
                     temps={recette.temps}
+                    ratings={recette.ratings}
                   />
                 );
               })}
@@ -222,4 +142,4 @@ function Entrees(props) {
   );
 }
 
-export default Entrees;
+export default withUser(Entrees);

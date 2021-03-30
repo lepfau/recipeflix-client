@@ -13,7 +13,6 @@ import Desserts from "./pages/Desserts";
 import Plats from "./pages/Plats";
 import Snacks from "./pages/Snacks";
 import Entrees from "./pages/Entrees";
-import { AnimatedSwitch } from "react-router-transition";
 import { AnimatePresence } from "framer-motion";
 
 function App() {

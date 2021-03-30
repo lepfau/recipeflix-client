@@ -1,10 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import apiHandler from "../api/apiHandler";
-import Rating from "@material-ui/lab/Rating";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
+import React from "react";
 import RecipeCard from "./RecipeCard";
+
 function Recipe(recette) {
   return (
     <RecipeCard
@@ -14,6 +10,7 @@ function Recipe(recette) {
       name={recette.name}
       type={recette.type}
       temps={recette.temps}
+      ratings={recette.ratings}
     />
   );
 }

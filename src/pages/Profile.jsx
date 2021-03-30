@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import apiHandler from "../api/apiHandler";
 import { withUser } from "../components/Auth/withUser";
-import Recipe from "../components/Recipe";
 
 const Profile = (props) => {
   const [recipes, setRecipes] = useState([]);
@@ -10,7 +9,7 @@ const Profile = (props) => {
     apiHandler
       .getUserProfile()
       .then((resp) => {
-        console.log(resp.id_recipes);
+        console.log(resp);
         setRecipes(resp.id_recipes);
       })
       .catch((err) => {
@@ -18,19 +17,13 @@ const Profile = (props) => {
       });
   }, []);
 
-  function handleDelete(itemId) {
-    apiHandler.deleteRecipe(itemId).then(() => {
-      setRecipes(recipes.filter((it) => it._id !== itemId));
-    });
-  }
-
   return (
     <div>
       <h1 className="recettes-title">Mon profil</h1>
       <h2 style={{ color: "white", marginBottom: "40px" }}>
         Mes recettes ajoutées
       </h2>
-      <div className="recipe-container" style={{ marginLeft: "50px" }}>
+      {/* <div className="recipe-container" style={{ marginLeft: "50px" }}>
         {recipes.map((recette) => {
           return (
             <div
@@ -64,7 +57,7 @@ const Profile = (props) => {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 };

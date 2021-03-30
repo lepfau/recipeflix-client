@@ -57,6 +57,13 @@ export default {
       .catch(errorHandler);
   },
 
+  addRate(id, rating) {
+    return service
+      .post(`/api/recipes/${id}/rating`, rating)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
   deleteRecipe(itemId) {
     return service
       .delete("/api/recipes/" + itemId)
@@ -75,12 +82,6 @@ export default {
   getRatings() {
     return service
       .get("/api/ratings")
-      .then((res) => res.data)
-      .catch(errorHandler);
-  },
-  addRate(rateInfo) {
-    return service
-      .post("/api/ratings", rateInfo)
       .then((res) => res.data)
       .catch(errorHandler);
   },

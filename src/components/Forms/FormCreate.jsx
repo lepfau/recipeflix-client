@@ -103,8 +103,9 @@ class FormCreate extends Component {
       });
   };
 
-  handleRemove = (ing) => {
+  handleRemove = (event, ing) => {
     console.log(ing);
+    event.preventDefault();
     let filtered = [...this.state.ingredients];
     let final = filtered.filter((item) => item !== ing);
     this.setState({
@@ -112,7 +113,8 @@ class FormCreate extends Component {
     });
   };
 
-  handleRemoveSteps = (ing) => {
+  handleRemoveSteps = (event, ing) => {
+    event.preventDefault();
     console.log(ing);
     let filtered = [...this.state.etapes];
     let final = filtered.filter((item) => item !== ing);
@@ -252,8 +254,9 @@ class FormCreate extends Component {
                           <div className="ingredient" key={index}>
                             <p>{ing[0].toUpperCase() + ing.substring(1)}</p>
                             <a
+                              href="!#"
                               className="removebtn"
-                              onClick={() => this.handleRemove(ing)}
+                              onClick={(e) => this.handleRemove(e, ing)}
                             >
                               X
                             </a>
@@ -276,8 +279,9 @@ class FormCreate extends Component {
                           <div className="etape" key={index}>
                             <li>{ing[0].toUpperCase() + ing.substring(1)}</li>
                             <a
+                              href="!#"
                               className="removebtn"
-                              onClick={() => this.handleRemoveSteps(ing)}
+                              onClick={(e) => this.handleRemoveSteps(e, ing)}
                             >
                               x
                             </a>

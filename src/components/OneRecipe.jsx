@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import apiHandler from "../api/apiHandler";
-import { AnimatePresence, motion } from "framer-motion";
+import { withUser } from "../components/Auth/withUser";
+import { motion } from "framer-motion";
 import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 
 function OneRecipe(props) {
   const [oneRecipe, setoneRecipe] = useState([]);
-  const [rate, setRate] = useState([]);
-  const [rating, setRating] = useState({});
-  const [value, setValue] = useState(2);
+  const [note, setNote] = useState({ note: 0 });
+  const [value, setValue] = React.useState(2);
 
   useEffect(() => {
     apiHandler
@@ -20,12 +20,33 @@ function OneRecipe(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [props.match.params.id]);
+
+  function handleChange(e) {
+    e.preventDefault();
+
+    console.log(oneRecipe);
+    setNote({ note: e.target.value });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    apiHandler.addRate(props.match.params.id, note).then((resp) => {
+      console.log(resp);
+    });
+  }
+
+  function handleclick() {
+    console.log(props.context.user._id);
+  }
 
   return (
     <motion.div exit={{ opacity: 0 }}>
       <div className="onerecipepage">
-        <h1 className="onerecipetitle">{oneRecipe.name}</h1>
+        <h1 onClick={handleclick} className="onerecipetitle">
+          {oneRecipe.name}
+        </h1>
         <div className="onerecipeimagetime">
           <img className="onerecipeimage" src={oneRecipe.image} alt="img" />
           <div style={{ display: "flex", justifyContent: "space-evenly" }}>
@@ -62,10 +83,25 @@ function OneRecipe(props) {
                 );
               })}
           </ol>
+
+          <div>
+            <Box component="fieldset" mb={3} borderColor="transparent">
+              <Typography component="legend">Notez la recette !</Typography>
+              <Rating
+                name="simple-controlled"
+                value={value}
+                onChange={(event, newValue) => {
+                  setValue(newValue);
+                  handleChange(event);
+                }}
+              />
+              <button onClick={handleSubmit}>Submit</button>
+            </Box>
+          </div>
         </div>
       </div>
     </motion.div>
   );
 }
 
-export default OneRecipe;
+export default withUser(OneRecipe);

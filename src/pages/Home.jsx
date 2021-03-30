@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -35,6 +35,7 @@ function Home(props) {
                   id={recette._id}
                   type={recette.type}
                   temps={recette.temps}
+                  ratings={recette.ratings}
                 />
               );
             })}
