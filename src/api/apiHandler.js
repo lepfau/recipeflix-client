@@ -64,6 +64,15 @@ export default {
       .catch(errorHandler);
   },
 
+  deleteRate(rateId) {
+    return service
+      .delete("/api/ratings/" + rateId)
+      .then(() => {
+        console.log("successfully deleted");
+      })
+      .catch(errorHandler);
+  },
+
   deleteRecipe(itemId) {
     return service
       .delete("/api/recipes/" + itemId)

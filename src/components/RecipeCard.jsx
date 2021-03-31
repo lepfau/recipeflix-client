@@ -5,14 +5,13 @@ import RatingStars from "./RatingStars";
 function RecipeCard(props) {
   let sum = 0;
   let total = 0;
-  if (props.ratings.length > 0) {
+
+  (function summm() {
     props.ratings.forEach((rate) => {
       sum += rate.note;
     });
     total = sum / props.ratings.length;
-  } else {
-    total = 0;
-  }
+  })();
 
   return (
     <NavLink exact to={`/recipes/${props.id}`}>

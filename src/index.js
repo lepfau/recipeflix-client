@@ -9,6 +9,7 @@ import "./styles/global.css";
 import "./styles/Home.css";
 import "./styles/FormCreate.css";
 import "./styles/Recettes.css";
+import "./styles/FormSignup.css";
 
 ReactDOM.render(
   <BrowserRouter>

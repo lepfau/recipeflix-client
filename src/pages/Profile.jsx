@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import apiHandler from "../api/apiHandler";
 import { withUser } from "../components/Auth/withUser";
+import Recipe from "../components/Recipe";
 
 const Profile = (props) => {
   const [recipes, setRecipes] = useState([]);
@@ -23,10 +24,11 @@ const Profile = (props) => {
       <h2 style={{ color: "white", marginBottom: "40px" }}>
         Mes recettes ajoutées
       </h2>
-      {/* <div className="recipe-container" style={{ marginLeft: "50px" }}>
+      <div className="recipe-container" style={{ marginLeft: "50px" }}>
         {recipes.map((recette) => {
           return (
             <div
+              key={recette._id}
               style={{
                 display: "flex",
                 flexDirection: "column",
@@ -42,22 +44,22 @@ const Profile = (props) => {
                   id={recette._id}
                   type={recette.type}
                   temps={recette.temps}
+                  ratings={recette.ratings}
                 />
               </div>
               <i
-                class="fas fa-trash"
+                className="fas fa-trash"
                 style={{
                   color: "white",
                   cursor: "pointer",
                   marginBottom: "20px",
                   marginTop: "15px",
                 }}
-                onClick={() => handleDelete(recette._id)}
               ></i>
             </div>
           );
         })}
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -10,12 +10,14 @@ class FormSignup extends Component {
   state = {
     email: "",
     password: "",
+    firstName: "",
+    lastName: "",
+    userName: "",
   };
 
   handleChange = (event) => {
     const value = event.target.value;
     const key = event.target.name;
-
     this.setState({ [key]: value });
   };
 
@@ -38,25 +40,70 @@ class FormSignup extends Component {
     }
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="email">Email</label>
-        <input
-          onChange={this.handleChange}
-          value={this.state.email}
-          type="email"
-          id="email"
-          name="email"
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          onChange={this.handleChange}
-          value={this.state.password}
-          type="password"
-          id="password"
-          name="password"
-        />
-        <button>Submit</button>
-      </form>
+      <div>
+        <h1 className="recettes-title">Créer un compte</h1>
+        <div className="signup-form-container">
+          <form onSubmit={this.handleSubmit} className="signup-form">
+            <div className="signup-form-field">
+              <label htmlFor="email">Email*</label>
+              <input
+                className="sign-form-input"
+                onChange={this.handleChange}
+                value={this.state.email}
+                type="email"
+                id="email"
+                name="email"
+              />
+            </div>
+            <div className="signup-form-field">
+              <label htmlFor="password">Password*</label>
+              <input
+                className="sign-form-input"
+                onChange={this.handleChange}
+                value={this.state.password}
+                type="password"
+                id="password"
+                name="password"
+              />
+            </div>
+            <div className="signup-form-field">
+              <label htmlFor="firstName">Prénom</label>
+              <input
+                className="sign-form-input"
+                onChange={this.handleChange}
+                value={this.state.firstName}
+                type="text"
+                id="firstName"
+                name="firstName"
+              />
+            </div>
+            <div className="signup-form-field">
+              <label htmlFor="lastName">Nom</label>
+              <input
+                className="sign-form-input"
+                onChange={this.handleChange}
+                value={this.state.lastName}
+                type="text"
+                id="lastName"
+                name="lastName"
+              />
+            </div>
+            <div className="signup-form-field">
+              <label htmlFor="userName">Pseudo*</label>
+              <input
+                className="sign-form-input"
+                onChange={this.handleChange}
+                value={this.state.userName}
+                type="text"
+                id="userName"
+                name="userName"
+              />
+            </div>
+            <p style={{ margin: "20px" }}>* Champs obligatoires</p>
+            <button className="btn-sign">S'enregistrer</button>
+          </form>
+        </div>
+      </div>
     );
   }
 }

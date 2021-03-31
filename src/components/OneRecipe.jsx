@@ -8,8 +8,6 @@ import Box from "@material-ui/core/Box";
 
 function OneRecipe(props) {
   const [oneRecipe, setoneRecipe] = useState([]);
-  const [note, setNote] = useState({ note: 2 });
-  const [comment, setComment] = useState({ comment: "" });
   const [value, setValue] = React.useState(3);
   const [ratings, setRatings] = useState([]);
   const [noteComment, setNoteComment] = useReducer(
@@ -33,25 +31,26 @@ function OneRecipe(props) {
       });
   }, [props.match.params.id]);
 
-  function handleChange(e) {
-    e.preventDefault();
-    console.log(oneRecipe);
-    setNote({ [e.target.name]: e.target.value });
-  }
-
   const handleChangeInput = (event) => {
     const name = event.target.name;
     const newValue = event.target.value;
     setNoteComment({ [name]: newValue });
   };
 
-  function handleSubmit(e) {
+  function handleSubmit(event) {
+    event.preventDefault();
     apiHandler.addRate(props.match.params.id, noteComment).then((resp) => {
       console.log(resp);
     });
     apiHandler.getOneRecipe(props.match.params.id).then((resp) => {
       setoneRecipe(resp);
       setRatings(resp.ratings);
+    });
+  }
+
+  function handleDelete(rateId) {
+    apiHandler.deleteRate(rateId).then((resp) => {
+      setRatings(ratings.filter((rate) => rate._id !== rateId));
     });
   }
 
@@ -107,7 +106,7 @@ function OneRecipe(props) {
                   handleChangeInput(event);
                 }}
               />
-              <button onClick={(e) => handleSubmit(e)}>Submit</button>
+              <button onClick={handleSubmit}>Submit</button>
             </Box>
             <input
               type="text"
@@ -126,6 +125,9 @@ function OneRecipe(props) {
                   </Box>
                 </div>
                 <p> {rate.id_user.email}</p> <p>{rate.comment}</p>
+                {rate.id_user._id === props.context.user._id && (
+                  <button onClick={() => handleDelete(rate._id)}>X</button>
+                )}
               </div>
             );
           })}
