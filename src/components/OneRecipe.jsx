@@ -118,16 +118,20 @@ function OneRecipe(props) {
           <br></br>
           {ratings.map((rate) => {
             return (
-              <div key={rate._id} style={{ display: "flex" }}>
-                <div>
-                  <Box component="fieldset" mb={3} borderColor="transparent">
-                    <Rating name="read-only" value={rate.note} readOnly />
-                  </Box>
+              <div>
+                <div key={rate._id} style={{ display: "flex" }}>
+                  <div>
+                    <Box component="fieldset" mb={3} borderColor="transparent">
+                      <Rating name="read-only" value={rate.note} readOnly />
+                    </Box>
+                  </div>
+                  <p> {rate.id_user.email}</p> <p>{rate.comment}</p>
                 </div>
-                <p> {rate.id_user.email}</p> <p>{rate.comment}</p>
-                {rate.id_user._id === props.context.user._id && (
-                  <button onClick={() => handleDelete(rate._id)}>X</button>
-                )}
+                {props.context.isLoggedIn ? (
+                  rate.id_user._id === props.context.user._id ? (
+                    <p onClick={() => handleDelete(rate._id)}>X</p>
+                  ) : null
+                ) : null}
               </div>
             );
           })}
