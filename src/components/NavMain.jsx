@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { withUser } from "../components/Auth/withUser";
 import apiHandler from "../api/apiHandler";
-
+import MenuProfile from "./MenuProfile";
 import "../styles/NavMain.css";
 
 const NavMain = (props) => {
@@ -34,15 +34,7 @@ const NavMain = (props) => {
             <li>
               <NavLink to="/create">Ajouter une recette</NavLink>
             </li>
-            <li>
-              <NavLink to="/profile">Mon profil</NavLink>
-            </li>
-            <li>
-              <NavLink to="/profile/update">Profil update</NavLink>
-            </li>
-            <li>
-              <p onClick={handleLogout}>Déconnexion</p>
-            </li>
+            <MenuProfile />
           </React.Fragment>
         )}
         {!context.isLoggedIn && (

@@ -40,15 +40,7 @@ function UserSettings() {
               defaultValue={user.userName}
             ></input>
           </div>
-          <div className="signup-form-field">
-            <label htmlFor="username">Email</label>
-            <input
-              onChange={handleChange}
-              type="email"
-              name="email"
-              defaultValue={user.email}
-            ></input>
-          </div>
+
           <div className="signup-form-field">
             <label htmlFor="username">Mot de passe</label>
             <input
