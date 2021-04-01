@@ -17,6 +17,7 @@ function OneRecipe(props) {
       comment: "",
     }
   );
+  const [user, setUser] = useState("");
 
   useEffect(() => {
     apiHandler
@@ -25,6 +26,7 @@ function OneRecipe(props) {
         console.log(resp);
         setoneRecipe(resp);
         setRatings(resp.ratings);
+        setUser(resp.id_user.userName);
       })
       .catch((err) => {
         console.log(err);
@@ -39,7 +41,16 @@ function OneRecipe(props) {
 
   function handleSubmit(rateId) {
     apiHandler.addRate(props.match.params.id, noteComment).then((resp) => {
-      // setRatings(resp.ratings);
+      apiHandler
+        .getOneRecipe(props.match.params.id)
+        .then((resp) => {
+          console.log(resp);
+          setoneRecipe(resp);
+          setRatings(resp.ratings);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       console.log(resp);
     });
   }
@@ -54,6 +65,7 @@ function OneRecipe(props) {
     <motion.div exit={{ opacity: 0 }}>
       <div className="onerecipepage">
         <h1 className="onerecipetitle">{oneRecipe.name}</h1>
+        <h3> Ajouté par : {user}</h3>
         <div className="onerecipeimagetime">
           <img className="onerecipeimage" src={oneRecipe.image} alt="img" />
           <div style={{ display: "flex", justifyContent: "space-evenly" }}>

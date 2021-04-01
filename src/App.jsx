@@ -13,6 +13,7 @@ import Desserts from "./pages/Desserts";
 import Plats from "./pages/Plats";
 import Snacks from "./pages/Snacks";
 import Entrees from "./pages/Entrees";
+import UserSettings from "./pages/UserSettings";
 import { AnimatePresence } from "framer-motion";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <ProtectedRoute exact path="/create" component={FormCreate} />
           <Route exact path="/recipes/:id" component={OneRecipe} />
           <ProtectedRoute exact path="/profile" component={Profile} />
+          <Route exact path="/profile/update" component={UserSettings} />
         </Switch>
       </AnimatePresence>
     </div>

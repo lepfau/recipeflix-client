@@ -142,14 +142,21 @@ export default {
 
   getUsers() {
     return service
-      .get("/api/auth")
+      .get("/api/users")
       .then((res) => res.data)
       .catch(errorHandler);
   },
 
   getUserProfile() {
     return service
-      .get("/api/auth/profile")
+      .get("/api/users/profile")
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  updateUser(id, newInfos) {
+    return service
+      .patch(`/api/users/${id}`, newInfos)
       .then((res) => res.data)
       .catch(errorHandler);
   },

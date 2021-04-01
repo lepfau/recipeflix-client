@@ -38,6 +38,9 @@ const NavMain = (props) => {
               <NavLink to="/profile">Mon profil</NavLink>
             </li>
             <li>
+              <NavLink to="/profile/update">Profil update</NavLink>
+            </li>
+            <li>
               <p onClick={handleLogout}>Déconnexion</p>
             </li>
           </React.Fragment>
