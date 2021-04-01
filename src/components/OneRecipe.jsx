@@ -43,7 +43,6 @@ function OneRecipe(props) {
       console.log(resp);
     });
     apiHandler.getOneRecipe(props.match.params.id).then((resp) => {
-      setoneRecipe(resp);
       setRatings(resp.ratings);
     });
   }
@@ -118,8 +117,8 @@ function OneRecipe(props) {
           <br></br>
           {ratings.map((rate) => {
             return (
-              <div>
-                <div key={rate._id} style={{ display: "flex" }}>
+              <div key={rate._id}>
+                <div style={{ display: "flex" }}>
                   <div>
                     <Box component="fieldset" mb={3} borderColor="transparent">
                       <Rating name="read-only" value={rate.note} readOnly />

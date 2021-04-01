@@ -47,16 +47,48 @@ function Snacks(props) {
         resp.filter((rec) => rec.lactose === true || rec.vegan === true)
       );
     else if (gluten) setRecettes(resp.filter((rec) => rec.gluten === true));
-    else setRecettes(resp.filter((rec) => rec.type === "snack"));
+    else setRecettes(resp);
   }
 
   useEffect(() => {
     apiHandler
-      .getRecipes()
+      .getSnacks()
       .then((resp) => {
-        console.log(props);
-        console.log(resp);
-        handlefilter(resp.filter((rec) => rec.type === "snack"));
+        if (vegan)
+          setRecettes(
+            resp.filter((rec) => rec.vegan === true || rec.lactose === true)
+          );
+        else if (vegetarien && gluten)
+          setRecettes(
+            resp.filter((rec) => rec.gluten === true && rec.vegetarian === true)
+          );
+        else if (vegetarien && lactose)
+          setRecettes(
+            resp.filter(
+              (rec) => rec.lactose === true && rec.vegetarian === true
+            )
+          );
+        else if (vegetarien && lactose && gluten)
+          setRecettes(
+            resp.filter(
+              (rec) =>
+                rec.lactose === true &&
+                rec.vegetarian === true &&
+                rec.gluten === true
+            )
+          );
+        else if (lactose && gluten)
+          setRecettes(
+            resp.filter((rec) => rec.lactose === true && rec.gluten === true)
+          );
+        else if (vegetarien)
+          setRecettes(resp.filter((rec) => rec.vegetarian === true));
+        else if (lactose)
+          setRecettes(
+            resp.filter((rec) => rec.lactose === true || rec.vegan === true)
+          );
+        else if (gluten) setRecettes(resp.filter((rec) => rec.gluten === true));
+        else setRecettes(resp);
       })
       .catch((err) => {
         console.log(err);
@@ -70,19 +102,19 @@ function Snacks(props) {
   function handleSearch(inputsearch) {
     if (inputsearch.length > 0) {
       apiHandler
-        .getRecipes()
+        .getSnacks()
         .then((resp) => {
           let arr = resp.filter((rec) =>
             rec.name.toLowerCase().includes(inputsearch.toLowerCase())
           );
-          handlefilter(arr.filter((rec) => rec.type === "snack"));
+          handlefilter(arr);
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
       apiHandler
-        .getRecipes()
+        .getSnacks()
         .then((resp) => {
           handlefilter(resp);
         })

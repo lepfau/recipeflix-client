@@ -50,6 +50,35 @@ export default {
       .then((res) => res.data)
       .catch(errorHandler);
   },
+
+  getPlats() {
+    return service
+      .get("/api/recipes/plats")
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  getDesserts() {
+    return service
+      .get("/api/recipes/desserts")
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  getSnacks() {
+    return service
+      .get("/api/recipes/snacks")
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  getEntrees() {
+    return service
+      .get("/api/recipes/entrees")
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
   createRecipee(recipeInfo) {
     return service
       .post("/api/recipes", recipeInfo)
