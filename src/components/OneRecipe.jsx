@@ -37,13 +37,10 @@ function OneRecipe(props) {
     setNoteComment({ [name]: newValue });
   };
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit(rateId) {
     apiHandler.addRate(props.match.params.id, noteComment).then((resp) => {
+      // setRatings(resp.ratings);
       console.log(resp);
-    });
-    apiHandler.getOneRecipe(props.match.params.id).then((resp) => {
-      setRatings(resp.ratings);
     });
   }
 
@@ -105,7 +102,18 @@ function OneRecipe(props) {
                   handleChangeInput(event);
                 }}
               />
-              <button onClick={handleSubmit}>Submit</button>
+              <i
+                onClick={handleSubmit}
+                className="fas fa-trash"
+                style={{
+                  color: "white",
+                  cursor: "pointer",
+                  marginBottom: "20px",
+                  marginTop: "15px",
+                }}
+              >
+                Ajouter
+              </i>
             </Box>
             <input
               type="text"

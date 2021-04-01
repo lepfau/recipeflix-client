@@ -93,6 +93,15 @@ export default {
       .catch(errorHandler);
   },
 
+  deleteAllRates(id) {
+    return service
+      .delete(`/api/recipes/${id}/rating`)
+      .then(() => {
+        console.log(" all rates deleted as well");
+      })
+      .catch(errorHandler);
+  },
+
   deleteRate(rateId) {
     return service
       .delete("/api/ratings/" + rateId)

@@ -18,6 +18,14 @@ const Profile = (props) => {
       });
   }, []);
 
+  function handleDelete(recipeId) {
+    apiHandler.deleteRecipe(recipeId).then(() => {
+      apiHandler.deleteAllRates(recipeId);
+    });
+
+    setRecipes(recipes.filter((recipe) => recipe._id !== recipeId));
+  }
+
   return (
     <div>
       <h1 className="recettes-title">Mon profil</h1>
@@ -48,6 +56,7 @@ const Profile = (props) => {
                 />
               </div>
               <i
+                onClick={() => handleDelete(recette._id)}
                 className="fas fa-trash"
                 style={{
                   color: "white",
