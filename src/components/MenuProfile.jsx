@@ -14,6 +14,9 @@ function MenuProfile(props) {
       .then(() => {
         context.removeUser();
       })
+      .then(() => {
+        props.history.push("/");
+      })
       .catch((error) => {
         console.log(error);
       });
