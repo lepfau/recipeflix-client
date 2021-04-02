@@ -8,7 +8,7 @@
 }
 
 .homepage-title {
-  color: red;
+  color: firebrick;
   font-size: 3em;
   text-shadow: 8px 8px 16px black;
   margin-top: 15px;
@@ -28,23 +28,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 20px;
+  justify-content: center;
 }
 
 .homepage-link {
-  color: white;
-  font-size: 1.5em;
+  color: firebrick;
+  font-size: 1.2em;
   text-shadow: 4px 4px 8px black;
-  margin: 20px;
-  background-color: whitesmoke;
+  margin: 8px;
+  height: 65px;
+  background-color: black;
   padding: 15px 30px;
-  border-radius: 30px;
-  box-shadow: 2px 2px 4px black;
+  border-radius: 14px;
+  box-shadow: 1px 1px 2px black;
   border: none;
+  width: 250px;
+  text-align: center;
 }
 
 .homepage-link:hover {
-  background-color: green;
+  box-shadow: 4px 4px 8px black;
 }
 
 .wholehomepage {
@@ -66,5 +70,5 @@
 
 .active {
   font-weight: 800;
-  color: red;
+  color: firebrick;
 }

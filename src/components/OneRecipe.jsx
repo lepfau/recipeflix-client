@@ -167,7 +167,9 @@ function OneRecipe(props) {
                   </Box>
                 </div>
                 <div>
-                  <p> {rate.id_user.email}</p>
+                  <p>
+                    <i> {rate.id_user.userName}</i>
+                  </p>
 
                   <p style={{ marginRight: "20px" }}>{rate.comment}</p>
                 </div>

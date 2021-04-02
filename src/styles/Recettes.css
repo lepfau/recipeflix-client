@@ -8,7 +8,7 @@
 }
 
 .recettes-title {
-  color: red;
+  color: firebrick;
   text-align: center;
   margin: 15px;
   font-size: 3.2em;
@@ -75,6 +75,16 @@
   width: 75%;
 }
 
+.recipe-card-name {
+  margin-bottom: 20px;
+}
+
+.recipe-card-name-text {
+  text-shadow: 2px 2px 4px black;
+  font-size: 1.2em;
+  font-weight: 900;
+}
+
 .recipe-card {
   position: relative;
   transition: transform 500ms;
@@ -97,6 +107,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   padding: 5px;
   border-radius: 5px;
+  width: fit-content;
 }
 
 .filterrecipe {
@@ -144,7 +155,7 @@
 }
 
 input:checked + .slider {
-  background-color: green;
+  background-color: firebrick;
 }
 
 input:focus + .slider {
@@ -218,7 +229,7 @@ input:checked + .slider:before {
   margin-top: 20px;
   font-size: 3em;
   text-align: center;
-  color: red;
+  color: firebrick;
   margin-bottom: 5px;
 }
 

@@ -45,7 +45,7 @@
 
   margin-bottom: -10px;
   text-align: center;
-  color: Red;
+  color: firebrick;
   font-weight: 300;
 }
 
@@ -89,7 +89,7 @@
 }
 
 .ingredient:hover {
-  color: red;
+  color: firebrick;
 }
 
 @keyframes appear {
@@ -111,7 +111,7 @@
 }
 
 .etape:hover {
-  color: red;
+  color: firebrick;
 }
 
 .ingredient p {
@@ -140,7 +140,7 @@
 }
 
 .btncreateform:hover {
-  color: red;
+  color: firebrick;
   box-shadow: 2px 2px 4px black;
 }
 
@@ -229,6 +229,6 @@ hr {
 }
 
 .btnformcreate:hover {
-  color: red;
+  color: firebrick;
   background-color: black;
 }

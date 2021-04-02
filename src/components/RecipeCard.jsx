@@ -22,9 +22,9 @@ function RecipeCard(props) {
         key={props._id}
         className="recipe-card"
       >
-        <div>
+        <div className="recipe-card-name">
           {" "}
-          <h3>{props.name}</h3>{" "}
+          <h3 className="recipe-card-name-text">{props.name}</h3>{" "}
         </div>
         <div className="recipeinfoscard">
           <p className="recipetype">{props.type}</p>
