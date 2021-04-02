@@ -35,7 +35,9 @@ export default class CreateIngredients extends Component {
             type="text"
             value={this.state.ingredients}
           ></input>
-          <button type="submit">+</button>
+          <button type="submit" className="btnformcreate">
+            +
+          </button>
         </div>
       </form>
     );

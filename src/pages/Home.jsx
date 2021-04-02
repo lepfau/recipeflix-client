@@ -23,8 +23,12 @@ function Home(props) {
       <div className="wholehomepage">
         <div className="homepage">
           <h2 className="recettes-title">App Recettes ∆ </h2>
+          {lastthree.length > 3 && (
+            <h3 className="homepage-subtitle">
+              Les dernières recettes ajoutées
+            </h3>
+          )}
 
-          <h3 className="homepage-subtitle">Les dernières recettes ajoutées</h3>
           <div className="recipe-container">
             {lastthree.map((recette) => {
               return (

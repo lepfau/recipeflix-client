@@ -1,6 +1,7 @@
 # App Recipe
 
 > Create recipes, share them with other users and filter them by their specifities!
+> Project is deployed [here](https://recipe-flix.herokuapp.com) but still on progress
 
 ## Table of contents
 

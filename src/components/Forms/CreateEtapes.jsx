@@ -35,7 +35,9 @@ export default class CreateEtapes extends Component {
             type="text"
             value={this.state.etapes}
           ></input>
-          <button type="submit">+</button>
+          <button className="btnformcreate" type="submit">
+            +
+          </button>
         </div>
       </form>
     );

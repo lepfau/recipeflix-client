@@ -246,7 +246,7 @@ class FormCreate extends Component {
               <div className="ingredientsetapes">
                 <div className="ingredients">
                   <h3 style={{ marginBottom: "15px" }}>Ingrédients</h3>
-
+                  <hr style={{ width: "100%" }}></hr>
                   <ul>
                     {this.state.ingredients.length > 0 ? (
                       this.state.ingredients.map((ing, index) => {
@@ -271,7 +271,7 @@ class FormCreate extends Component {
 
                 <div className="etapes">
                   <h3 style={{ marginBottom: "15px" }}>Etapes</h3>
-
+                  <hr style={{ width: "100%" }}></hr>
                   <ol>
                     {this.state.etapes.length > 0 ? (
                       this.state.etapes.map((ing, index) => {
@@ -283,7 +283,7 @@ class FormCreate extends Component {
                               className="removebtn"
                               onClick={(e) => this.handleRemoveSteps(e, ing)}
                             >
-                              x
+                              X
                             </a>
                           </div>
                         );
@@ -304,7 +304,13 @@ class FormCreate extends Component {
                 )}
               </div>
             </div>
-            <div style={{ display: "flex", justifyContent: "center" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginBottom: "20px",
+              }}
+            >
               <button onClick={this.handleSubmit} className="btncreateform">
                 Ajouter la recette !
               </button>

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import { NavLink } from "react-router-dom";
 
 function OneRecipe(props) {
   const [oneRecipe, setoneRecipe] = useState([]);
@@ -39,7 +40,8 @@ function OneRecipe(props) {
     setNoteComment({ [name]: newValue });
   };
 
-  function handleSubmit(rateId) {
+  function handleSubmit(event) {
+    event.preventDefault();
     apiHandler.addRate(props.match.params.id, noteComment).then((resp) => {
       apiHandler
         .getOneRecipe(props.match.params.id)
@@ -62,10 +64,10 @@ function OneRecipe(props) {
   }
 
   return (
-    <motion.div exit={{ opacity: 0 }}>
+    <motion.div exit={{ opacity: 0 }} className="fullonerecipe">
       <div className="onerecipepage">
         <h1 className="onerecipetitle">{oneRecipe.name}</h1>
-        <h3> Ajouté par : {user}</h3>
+        <h4> Ajouté par : {user}</h4>
         <div className="onerecipeimagetime">
           <img className="onerecipeimage" src={oneRecipe.image} alt="img" />
           <div style={{ display: "flex", justifyContent: "space-evenly" }}>
@@ -76,6 +78,12 @@ function OneRecipe(props) {
               <i className="fas fa-utensils"></i>
               {oneRecipe.type}
             </p>
+          </div>
+          <div className="onerecipe-specifies">
+            {oneRecipe.vegan ? <p>Vegan</p> : null}
+            {oneRecipe.vegetarian ? <p>Végétarien</p> : null}
+            {oneRecipe.lactose ? <p>Sans Lactose</p> : null}
+            {oneRecipe.gluten ? <p>Sans Gluten</p> : null}
           </div>
         </div>
         <hr className="onerecipehr"></hr>
@@ -102,10 +110,21 @@ function OneRecipe(props) {
                 );
               })}
           </ol>
-
+        </div>
+        <hr className="onerecipehr"></hr>
+        <div className="ratingcommentfull">
           <div>
-            <Box component="fieldset" mb={1} borderColor="transparent">
-              <Typography component="legend">Notez la recette !</Typography>
+            <Box
+              component="fieldset"
+              mb={1}
+              borderColor="transparent"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <Rating
                 name="note"
                 value={value}
@@ -114,47 +133,56 @@ function OneRecipe(props) {
                   handleChangeInput(event);
                 }}
               />
-              <i
-                onClick={handleSubmit}
-                className="fas fa-trash"
+              <form
                 style={{
-                  color: "white",
-                  cursor: "pointer",
-                  marginBottom: "20px",
+                  display: "flex",
+                  flexDirection: "column",
+                  border: "none",
                   marginTop: "15px",
                 }}
+                onSubmit={handleSubmit}
               >
-                Ajouter
-              </i>
+                <textarea
+                  className="inputrating"
+                  type="textarea"
+                  name="comment"
+                  onChange={handleChangeInput}
+                ></textarea>
+                <button className="btninputrating" type="submit">
+                  Poster la note et/ou le commentaire
+                </button>
+              </form>
             </Box>
-            <input
-              type="text"
-              name="comment"
-              onChange={handleChangeInput}
-            ></input>
           </div>
-          <br></br>
-          <br></br>
-          {ratings.map((rate) => {
-            return (
-              <div key={rate._id}>
-                <div style={{ display: "flex" }}>
-                  <div>
-                    <Box component="fieldset" mb={3} borderColor="transparent">
-                      <Rating name="read-only" value={rate.note} readOnly />
-                    </Box>
-                  </div>
-                  <p> {rate.id_user.email}</p> <p>{rate.comment}</p>
+        </div>
+        <hr className="onerecipehr"></hr>
+        <h2 style={{ marginBottom: "15px" }}>Commentaires et notes</h2>
+        {ratings.map((rate) => {
+          return (
+            <div key={rate._id}>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <div>
+                  <Box component="fieldset" mb={3} borderColor="transparent">
+                    <Rating name="read-only" value={rate.note} readOnly />
+                  </Box>
+                </div>
+                <div>
+                  <p> {rate.id_user.email}</p>
+
+                  <p style={{ marginRight: "20px" }}>{rate.comment}</p>
                 </div>
                 {props.context.isLoggedIn ? (
                   rate.id_user._id === props.context.user._id ? (
-                    <p onClick={() => handleDelete(rate._id)}>X</p>
+                    <i
+                      className="fa fa-trash"
+                      onClick={() => handleDelete(rate._id)}
+                    ></i>
                   ) : null
                 ) : null}
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
     </motion.div>
   );

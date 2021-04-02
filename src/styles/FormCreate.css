@@ -21,9 +21,9 @@
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-bottom: 20px;
+  margin-bottom: 90px;
   margin-top: 25px;
-  width: 75%;
+  width: 90%;
   background-color: white;
   border-radius: 8px;
   box-shadow: 20px 20px 40px black;
@@ -36,6 +36,7 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
   margin-top: 50px;
+  align-items: flex-start;
 }
 
 .formcreate-title {
@@ -51,6 +52,7 @@
 .fieldscreateform {
   background-color: #353535;
   padding: 31px;
+  width: 580px;
   border-radius: 8px;
   box-shadow: 4px 4px 8px #141414;
 }
@@ -79,10 +81,15 @@
 }
 
 .ingredient {
-  display: flex;
-  align-items: center;
-  width: 200px;
   animation: appear 1s;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ingredient:hover {
+  color: red;
 }
 
 @keyframes appear {
@@ -97,12 +104,20 @@
 
 .etape {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  margin-top: 10px;
+  justify-content: space-between;
   animation: appear 1s;
+}
+
+.etape:hover {
+  color: red;
 }
 
 .ingredient p {
   margin-right: 30px;
+  margin-top: 10px;
+  padding: 2px;
 }
 
 .etape li {
@@ -148,7 +163,7 @@
 .ingredientsetapes {
   display: flex;
   flex-direction: column;
-  margin-top: 25px;
+
   align-items: center;
 }
 
@@ -165,7 +180,7 @@
   background-color: #353535;
   padding: 31px;
   border-radius: 8px;
-  width: 400px;
+  width: 580px;
   box-shadow: 4px 4px 8px #141414;
 }
 
@@ -203,4 +218,17 @@ hr {
   padding-top: -30px;
   margin-bottom: 20px;
   width: 80%;
+}
+
+.btnformcreate {
+  width: 30px;
+  height: 30px;
+  font-weight: bolder;
+  font-size: 1em;
+  border: none;
+}
+
+.btnformcreate:hover {
+  color: red;
+  background-color: black;
 }

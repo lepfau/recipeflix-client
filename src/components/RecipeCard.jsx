@@ -18,15 +18,15 @@ function RecipeCard(props) {
       <div
         style={{
           backgroundImage: `url(${props.image})`,
-          backgroundPosition: "0 0",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
         }}
         key={props._id}
         className="recipe-card"
       >
-        <h3>{props.name}</h3>
         <div>
+          {" "}
+          <h3>{props.name}</h3>{" "}
+        </div>
+        <div className="recipeinfoscard">
           <p className="recipetype">{props.type}</p>
           <p>
             <i className="far fa-clock"></i> {props.temps} min

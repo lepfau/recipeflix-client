@@ -18,6 +18,10 @@
 .recipe-card {
   color: white;
 
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: flex-start;
   text-shadow: 4px 4px 8px black;
   margin: 2px;
   width: 250px;
@@ -26,7 +30,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: flex-start;
   border-radius: 5px;
   background-color: #353535;
 }
@@ -35,6 +39,7 @@
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 50px;
+  justify-content: flex-start;
 }
 
 .searchbar {
@@ -62,10 +67,8 @@
 }
 
 .leftfilters {
-  width: 25%;
-  margin-left: 20px;
-  position: sticky;
-  top: 20px;
+  width: 18%;
+  margin-left: 100px;
 }
 
 .container {
@@ -94,7 +97,6 @@
   background-color: rgba(0, 0, 0, 0.5);
   padding: 5px;
   border-radius: 5px;
-  margin-right: 180px;
 }
 
 .filterrecipe {
@@ -207,12 +209,6 @@ input:checked + .slider:before {
   margin-bottom: 10px;
 }
 
-.ingredient {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .onerecipehr {
   margin-top: 20px;
   width: 50%;
@@ -220,8 +216,10 @@ input:checked + .slider:before {
 
 .onerecipetitle {
   margin-top: 20px;
-  font-size: 2em;
+  font-size: 3em;
   text-align: center;
+  color: red;
+  margin-bottom: 5px;
 }
 
 .onerecipesubtitle {
@@ -280,4 +278,37 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.loadinggif {
+  position: absolute;
+  /* justify-self: center; */
+  left: 50%;
+  right: 50%;
+}
+
+.onerecipe-specifies {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.onerecipe-specifies p {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 8px;
+  border-radius: 8px;
+  margin: 5px;
+}
+
+.inputrating {
+  width: 480px;
+  border-radius: 8px;
+  border: none;
+}
+
+.btninputrating {
+  margin-top: 5px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
 }
