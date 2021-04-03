@@ -20,10 +20,7 @@ function Desserts(props) {
       setRecettes(
         resp.filter((rec) => rec.vegan === true && rec.gluten === true)
       );
-    else if (vegan)
-      setRecettes(
-        resp.filter((rec) => rec.vegan === true || rec.vegetarian === true)
-      );
+    else if (vegan) setRecettes(resp.filter((rec) => rec.vegan === true));
     else if (vegetarien && gluten)
       setRecettes(
         resp.filter((rec) => rec.gluten === true && rec.vegetarian === true)
@@ -46,7 +43,9 @@ function Desserts(props) {
         resp.filter((rec) => rec.lactose === true && rec.gluten === true)
       );
     else if (vegetarien)
-      setRecettes(resp.filter((rec) => rec.vegetarian === true));
+      setRecettes(
+        resp.filter((rec) => rec.vegetarian === true || rec.vegan === true)
+      );
     else if (lactose) setRecettes(resp.filter((rec) => rec.lactose === true));
     else if (gluten) setRecettes(resp.filter((rec) => rec.gluten === true));
     else setRecettes(resp);
@@ -60,10 +59,7 @@ function Desserts(props) {
           setRecettes(
             resp.filter((rec) => rec.vegan === true && rec.gluten === true)
           );
-        else if (vegan)
-          setRecettes(
-            resp.filter((rec) => rec.vegan === true || rec.vegetarian === true)
-          );
+        else if (vegan) setRecettes(resp.filter((rec) => rec.vegan === true));
         else if (vegetarien && gluten)
           setRecettes(
             resp.filter((rec) => rec.gluten === true && rec.vegetarian === true)
@@ -88,7 +84,9 @@ function Desserts(props) {
             resp.filter((rec) => rec.lactose === true && rec.gluten === true)
           );
         else if (vegetarien)
-          setRecettes(resp.filter((rec) => rec.vegetarian === true));
+          setRecettes(
+            resp.filter((rec) => rec.vegetarian === true || rec.vegan === true)
+          );
         else if (lactose)
           setRecettes(resp.filter((rec) => rec.lactose === true));
         else if (gluten) setRecettes(resp.filter((rec) => rec.gluten === true));
