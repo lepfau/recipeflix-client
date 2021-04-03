@@ -160,4 +160,18 @@ export default {
       .then((res) => res.data)
       .catch(errorHandler);
   },
+
+  addFavorite(id) {
+    return service
+      .post(`/api/recipes/${id}/favorite`)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  removeFavorite(id) {
+    return service
+      .patch(`/api/recipes/${id}/favorite`)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
 };

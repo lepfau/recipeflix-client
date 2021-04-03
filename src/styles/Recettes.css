@@ -99,6 +99,16 @@
   border: 1px solid black;
 }
 
+.btnfav {
+  background-color: black;
+  padding: 9px;
+  margin-top: 12px;
+  border-radius: 8px;
+  border: none;
+  color: firebrick;
+  box-shadow: 2px 2x 4px black;
+}
+
 .recipe-image {
   display: block;
   width: 150px;

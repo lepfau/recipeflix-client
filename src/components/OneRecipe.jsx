@@ -19,6 +19,7 @@ function OneRecipe(props) {
     }
   );
   const [user, setUser] = useState("");
+  const [btnStyle, setBtnStyle] = useState("Ajouter aux favoris");
 
   useEffect(() => {
     apiHandler
@@ -63,12 +64,28 @@ function OneRecipe(props) {
     });
   }
 
+  function handleAdd(id) {
+    apiHandler.addFavorite(id).then((resp) => {
+      console.log(resp);
+      setTimeout(() => {
+        setBtnStyle("Ajouté aux favoris !");
+      }, 500);
+      setBtnStyle("...");
+    });
+  }
+
   return (
     <motion.div exit={{ opacity: 0 }} className="fullonerecipe">
       <div>
         <div className="onerecipepage">
           <h1 className="onerecipetitle">{oneRecipe.name}</h1>
           <h4> Ajouté par : {user}</h4>
+          {props.context.isLoggedIn &&
+          !props.context.user.favorites.includes(oneRecipe._id) ? (
+            <button className="btnfav" onClick={() => handleAdd(oneRecipe._id)}>
+              {btnStyle}
+            </button>
+          ) : null}
           <div className="onerecipeimagetime">
             <img className="onerecipeimage" src={oneRecipe.image} alt="img" />
             <div style={{ display: "flex", justifyContent: "space-evenly" }}>
