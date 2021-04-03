@@ -28,7 +28,7 @@
 
 .btn-sign:hover {
   background-color: black;
-  color: red;
+  color: firebrick;
   border: none;
   box-shadow: none;
 }

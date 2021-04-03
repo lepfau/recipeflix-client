@@ -96,6 +96,7 @@
 .recipe-container .recipe-card:hover {
   transform: scale(1.6);
   z-index: 1;
+  border: 1px solid black;
 }
 
 .recipe-image {

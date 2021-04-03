@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { motion } from "framer-motion";
 import apiHandler from "../api/apiHandler";
 import Recipe from "../components/Recipe";
+import recipeflix from "../assets/recipeflix.png";
 
 function Home(props) {
   const [lastthree, setLastthree] = useState([]);
@@ -22,7 +23,11 @@ function Home(props) {
     <motion.div exit={{ opacity: 0 }}>
       <div className="wholehomepage">
         <div className="homepage">
-          <h2 className="recettes-title">App Recettes ∆ </h2>
+          <img
+            className="homepage-title"
+            src={recipeflix}
+            alt="recipeflixlogo"
+          />
           {lastthree.length > 3 && (
             <h3 className="homepage-subtitle">
               Les dernières recettes ajoutées
@@ -46,7 +51,7 @@ function Home(props) {
           </div>
           <div className="homepage-links">
             <NavLink to="/recipes" className="homepage-link">
-              Les recettes
+              Voir les recettes
             </NavLink>
             <NavLink to="/create" className="homepage-link">
               Ajouter une recette

@@ -65,126 +65,130 @@ function OneRecipe(props) {
 
   return (
     <motion.div exit={{ opacity: 0 }} className="fullonerecipe">
-      <div className="onerecipepage">
-        <h1 className="onerecipetitle">{oneRecipe.name}</h1>
-        <h4> Ajouté par : {user}</h4>
-        <div className="onerecipeimagetime">
-          <img className="onerecipeimage" src={oneRecipe.image} alt="img" />
-          <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-            <p className="legend">
-              <i className="far fa-clock"></i> {oneRecipe.temps} minutes
-            </p>
-            <p className="legend">
-              <i className="fas fa-utensils"></i>
-              {oneRecipe.type}
-            </p>
+      <div>
+        <div className="onerecipepage">
+          <h1 className="onerecipetitle">{oneRecipe.name}</h1>
+          <h4> Ajouté par : {user}</h4>
+          <div className="onerecipeimagetime">
+            <img className="onerecipeimage" src={oneRecipe.image} alt="img" />
+            <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+              <p className="legend">
+                <i className="far fa-clock"></i> {oneRecipe.temps} minutes
+              </p>
+              <p className="legend">
+                <i className="fas fa-utensils"></i>
+                {oneRecipe.type}
+              </p>
+            </div>
+            <div className="onerecipe-specifies">
+              {oneRecipe.vegan ? <p>Vegan</p> : null}
+              {oneRecipe.vegetarian ? <p>Végétarien</p> : null}
+              {oneRecipe.lactose ? <p>Sans Lactose</p> : null}
+              {oneRecipe.gluten ? <p>Sans Gluten</p> : null}
+            </div>
           </div>
-          <div className="onerecipe-specifies">
-            {oneRecipe.vegan ? <p>Vegan</p> : null}
-            {oneRecipe.vegetarian ? <p>Végétarien</p> : null}
-            {oneRecipe.lactose ? <p>Sans Lactose</p> : null}
-            {oneRecipe.gluten ? <p>Sans Gluten</p> : null}
-          </div>
-        </div>
-        <hr className="onerecipehr"></hr>
-        <div className="onerecipeing">
-          <h2 className="onerecipesubtitle">Ingredients</h2>
-          {oneRecipe.ingredients &&
-            oneRecipe.ingredients.map((ing, index) => {
-              return (
-                <p key={index} className="inggg">
-                  {ing[0].toUpperCase() + ing.substring(1)}
-                </p>
-              );
-            })}
-        </div>{" "}
-        <hr className="onerecipehr"></hr>
-        <div className="onerecipesteps">
-          <h2 className="onerecipesubtitle">Etapes</h2>
-
-          <ol>
-            {oneRecipe.etapes &&
-              oneRecipe.etapes.map((ing, index) => {
+          <hr className="onerecipehr"></hr>
+          <div className="onerecipeing">
+            <h2 className="onerecipesubtitle">Ingredients</h2>
+            {oneRecipe.ingredients &&
+              oneRecipe.ingredients.map((ing, index) => {
                 return (
-                  <li key={index}>{ing[0].toUpperCase() + ing.substring(1)}</li>
+                  <p key={index} className="inggg">
+                    {ing[0].toUpperCase() + ing.substring(1)}
+                  </p>
                 );
               })}
-          </ol>
-        </div>
-        <hr className="onerecipehr"></hr>
-        <div className="ratingcommentfull">
-          <div>
-            <Box
-              component="fieldset"
-              mb={1}
-              borderColor="transparent"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Rating
-                name="note"
-                value={value}
-                onChange={(event, newValue) => {
-                  setValue(newValue);
-                  handleChangeInput(event);
-                }}
-              />
-              <form
+          </div>{" "}
+          <hr className="onerecipehr"></hr>
+          <div className="onerecipesteps">
+            <h2 className="onerecipesubtitle">Etapes</h2>
+
+            <ol>
+              {oneRecipe.etapes &&
+                oneRecipe.etapes.map((ing, index) => {
+                  return (
+                    <li key={index}>
+                      {ing[0].toUpperCase() + ing.substring(1)}
+                    </li>
+                  );
+                })}
+            </ol>
+          </div>
+          <hr className="onerecipehr"></hr>
+          <div className="ratingcommentfull">
+            <div>
+              <Box
+                component="fieldset"
+                mb={1}
+                borderColor="transparent"
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  border: "none",
-                  marginTop: "15px",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
-                onSubmit={handleSubmit}
               >
-                <textarea
-                  className="inputrating"
-                  type="textarea"
-                  name="comment"
-                  onChange={handleChangeInput}
-                ></textarea>
-                <button className="btninputrating" type="submit">
-                  Poster la note et/ou le commentaire
-                </button>
-              </form>
-            </Box>
-          </div>
-        </div>
-        <hr className="onerecipehr"></hr>
-        <h2 style={{ marginBottom: "15px" }}>Commentaires et notes</h2>
-        {ratings.map((rate) => {
-          return (
-            <div key={rate._id}>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <div>
-                  <Box component="fieldset" mb={3} borderColor="transparent">
-                    <Rating name="read-only" value={rate.note} readOnly />
-                  </Box>
-                </div>
-                <div>
-                  <p>
-                    <i> {rate.id_user.userName}</i>
-                  </p>
-
-                  <p style={{ marginRight: "20px" }}>{rate.comment}</p>
-                </div>
-                {props.context.isLoggedIn ? (
-                  rate.id_user._id === props.context.user._id ? (
-                    <i
-                      className="fa fa-trash"
-                      onClick={() => handleDelete(rate._id)}
-                    ></i>
-                  ) : null
-                ) : null}
-              </div>
+                <Rating
+                  name="note"
+                  value={value}
+                  onChange={(event, newValue) => {
+                    setValue(newValue);
+                    handleChangeInput(event);
+                  }}
+                />
+                <form
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    border: "none",
+                    marginTop: "15px",
+                  }}
+                  onSubmit={handleSubmit}
+                >
+                  <textarea
+                    className="inputrating"
+                    type="textarea"
+                    name="comment"
+                    onChange={handleChangeInput}
+                  ></textarea>
+                  <button className="btninputrating" type="submit">
+                    Poster la note et/ou le commentaire
+                  </button>
+                </form>
+              </Box>
             </div>
-          );
-        })}
+          </div>
+          <hr className="onerecipehr"></hr>
+          <h2 style={{ marginBottom: "15px" }}>Commentaires et notes</h2>
+          {ratings.map((rate) => {
+            return (
+              <div key={rate._id}>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <div>
+                    <Box component="fieldset" mb={3} borderColor="transparent">
+                      <Rating name="read-only" value={rate.note} readOnly />
+                    </Box>
+                  </div>
+                  <div>
+                    <p>
+                      <i> {rate.id_user.userName}</i>
+                    </p>
+
+                    <p style={{ marginRight: "20px" }}>{rate.comment}</p>
+                  </div>
+                  {props.context.isLoggedIn ? (
+                    rate.id_user._id === props.context.user._id ? (
+                      <i
+                        className="fa fa-trash"
+                        onClick={() => handleDelete(rate._id)}
+                      ></i>
+                    ) : null
+                  ) : null}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </motion.div>
   );

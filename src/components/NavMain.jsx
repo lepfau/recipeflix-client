@@ -4,6 +4,7 @@ import { withUser } from "../components/Auth/withUser";
 import apiHandler from "../api/apiHandler";
 import MenuProfile from "./MenuProfile";
 import "../styles/NavMain.css";
+import recipeflixlogo from "../assets/recipeflix.png";
 
 const NavMain = (props) => {
   const { context } = props;
@@ -22,7 +23,7 @@ const NavMain = (props) => {
   return (
     <nav className="NavMain">
       <NavLink exact to="/">
-        <p>Accueil</p>
+        <img src={recipeflixlogo} alt="recipeflixlogo" className="logonav" />
       </NavLink>
 
       <ul className="nav-list">
@@ -32,7 +33,7 @@ const NavMain = (props) => {
         {context.isLoggedIn && (
           <React.Fragment>
             <li>
-              <NavLink to="/create">Ajouter une recette</NavLink>
+              <NavLink to="/create">Proposer une recette</NavLink>
             </li>
             <MenuProfile />
           </React.Fragment>
