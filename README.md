@@ -1,6 +1,6 @@
 # App Recipe
 
-> Create recipes, share them with other users and filter them by their specifities!
+> Create recipes to share, filter them, add your favorites, rate and comment them !
 > Project is deployed [here](https://recipe-flix.herokuapp.com) but still on progress
 
 ## Table of contents
@@ -28,12 +28,6 @@ My biggest progress building the app were using react hooks, handling multiple f
 - React - version 16.13.1
 - Axios - version 0.19.2
 - Material-ui - version 4
-
-## Setup
-
-$npm i
-create .env REACT_APP_BACKEND_URL = http://localhost:XXXX
-$npm start
 
 ## Features
 
