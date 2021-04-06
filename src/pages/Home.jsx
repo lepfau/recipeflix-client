@@ -54,7 +54,7 @@ function Home(props) {
               Voir les recettes
             </NavLink>
             <NavLink to="/create" className="homepage-link">
-              Ajouter une recette
+              Proposer une recette
             </NavLink>
           </div>
         </div>

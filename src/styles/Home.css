@@ -33,7 +33,7 @@
   font-size: 1.2em;
   text-shadow: 4px 4px 8px black;
   margin: 8px;
-  height: 65px;
+  height: 55spx;
   background-color: black;
   padding: 15px 30px;
   border-radius: 14px;
@@ -41,6 +41,7 @@
   border: none;
   width: 250px;
   text-align: center;
+  font-weight: 200;
 }
 
 .homepage-link:hover {

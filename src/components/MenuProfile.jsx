@@ -33,9 +33,10 @@ function MenuProfile(props) {
   };
 
   return (
-    <div>
+    <ul className="nav-list">
       <li onClick={handleClick}>Profil</li>
       <Menu
+        className="menuuu"
         id="simple-menu"
         anchorEl={anchorEl}
         keepMounted
@@ -52,7 +53,7 @@ function MenuProfile(props) {
           <p onClick={handleLogout}>Déconnexion</p>
         </MenuItem>
       </Menu>
-    </div>
+    </ul>
   );
 }
 

@@ -18,3 +18,28 @@ a {
 body {
   background-color: #141414;
 }
+
+.message {
+  margin: 10px;
+  color: white;
+  border: 1px solid white;
+  padding: 5px;
+  text-align: center;
+}
+
+.message:empty {
+  border: none;
+}
+
+body::-webkit-scrollbar {
+  width: 0.6em;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 1px 1px 6px rgba(178, 34, 34, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: firebrick;
+  outline: 1px solid rgb(29, 3, 1);
+}

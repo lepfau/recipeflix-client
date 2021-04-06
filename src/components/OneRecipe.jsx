@@ -120,11 +120,19 @@ function OneRecipe(props) {
           <div className="onerecipesteps">
             <h2 className="onerecipesubtitle">Etapes</h2>
 
-            <ol>
+            <ol
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "60%",
+                textJustify: "inter-character",
+                marginLeft: "50px",
+              }}
+            >
               {oneRecipe.etapes &&
                 oneRecipe.etapes.map((ing, index) => {
                   return (
-                    <li key={index}>
+                    <li key={index} style={{ margin: "10px" }}>
                       {ing[0].toUpperCase() + ing.substring(1)}
                     </li>
                   );
@@ -177,34 +185,53 @@ function OneRecipe(props) {
           </div>
           <hr className="onerecipehr"></hr>
           <h2 style={{ marginBottom: "15px" }}>Commentaires et notes</h2>
-          {ratings.map((rate) => {
-            return (
-              <div key={rate._id}>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <div>
-                    <Box component="fieldset" mb={3} borderColor="transparent">
-                      <Rating name="read-only" value={rate.note} readOnly />
-                    </Box>
-                  </div>
-                  <div>
-                    <p>
-                      <i> {rate.id_user.userName}</i>
-                    </p>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+            }}
+          >
+            {ratings.map((rate) => {
+              return (
+                <div key={rate._id}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      margin: "20px",
+                    }}
+                  >
+                    <div>
+                      <Box
+                        component="fieldset"
+                        mb={3}
+                        borderColor="transparent"
+                      >
+                        <Rating name="read-only" value={rate.note} readOnly />
+                      </Box>
+                    </div>
+                    <div>
+                      <p>
+                        <i> {rate.id_user.userName}</i>
+                      </p>
 
-                    <p style={{ marginRight: "20px" }}>{rate.comment}</p>
+                      <p style={{ marginRight: "20px" }}>{rate.comment}</p>
+                    </div>
+                    {props.context.isLoggedIn ? (
+                      rate.id_user._id === props.context.user._id ? (
+                        <i
+                          style={{ cursor: "pointer" }}
+                          className="fa fa-trash"
+                          onClick={() => handleDelete(rate._id)}
+                        ></i>
+                      ) : null
+                    ) : null}
                   </div>
-                  {props.context.isLoggedIn ? (
-                    rate.id_user._id === props.context.user._id ? (
-                      <i
-                        className="fa fa-trash"
-                        onClick={() => handleDelete(rate._id)}
-                      ></i>
-                    ) : null
-                  ) : null}
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </motion.div>
