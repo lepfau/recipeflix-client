@@ -26,13 +26,16 @@
   margin: 2px;
   width: 250px;
   height: 200px;
-  padding: 20px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: flex-start;
   border-radius: 5px;
   background-color: #353535;
+}
+
+.recipeinfoscard {
 }
 
 .recipe-container {
@@ -76,7 +79,7 @@
 }
 
 .recipe-card-name {
-  margin-bottom: 20px;
+  height: 65px;
 }
 
 .recipe-card-name-text {
@@ -89,7 +92,6 @@
   position: relative;
   transition: transform 500ms;
   display: flex;
-  justify-content: space-between;
 }
 
 .recipe-container .recipe-card:focus,

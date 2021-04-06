@@ -26,6 +26,7 @@ function RecipeCard(props) {
           {" "}
           <h3 className="recipe-card-name-text">{props.name}</h3>{" "}
         </div>
+
         <div className="recipeinfoscard">
           <p className="recipetype">{props.type}</p>
           <p>

@@ -57,7 +57,11 @@ const Profile = (props) => {
                     alignItems: "center",
                   }}
                 >
-                  <div style={{ display: "flex" }} key={recette._id}>
+                  <div
+                    className="profilerecipes"
+                    style={{ display: "flex" }}
+                    key={recette._id}
+                  >
                     <Recipe
                       key={recette._id}
                       name={recette.name}
@@ -66,6 +70,7 @@ const Profile = (props) => {
                       type={recette.type}
                       temps={recette.temps}
                       ratings={recette.ratings}
+                      id_user={recette.id_user}
                     />
                   </div>
                   <i
