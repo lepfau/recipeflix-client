@@ -3,9 +3,7 @@ import apiHandler from "../api/apiHandler";
 import { withUser } from "../components/Auth/withUser";
 import { motion } from "framer-motion";
 import Rating from "@material-ui/lab/Rating";
-import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import { NavLink } from "react-router-dom";
 
 function OneRecipe(props) {
   const [oneRecipe, setoneRecipe] = useState([]);
@@ -25,7 +23,6 @@ function OneRecipe(props) {
     apiHandler
       .getOneRecipe(props.match.params.id)
       .then((resp) => {
-        console.log(resp);
         setoneRecipe(resp);
         setRatings(resp.ratings);
         setUser(resp.id_user.userName);
@@ -47,14 +44,12 @@ function OneRecipe(props) {
       apiHandler
         .getOneRecipe(props.match.params.id)
         .then((resp) => {
-          console.log(resp);
           setoneRecipe(resp);
           setRatings(resp.ratings);
         })
         .catch((err) => {
           console.log(err);
         });
-      console.log(resp);
     });
   }
 
@@ -66,7 +61,6 @@ function OneRecipe(props) {
 
   function handleAdd(id) {
     apiHandler.addFavorite(id).then((resp) => {
-      console.log(resp);
       setTimeout(() => {
         setBtnStyle("Ajouté aux favoris !");
       }, 500);

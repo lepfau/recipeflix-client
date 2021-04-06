@@ -10,7 +10,6 @@ function UserSettings() {
 
   useEffect(() => {
     apiHandler.getUserProfile().then((resp) => {
-      console.log(resp);
       setUser(resp);
     });
   }, []);

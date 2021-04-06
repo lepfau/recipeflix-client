@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
+
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { NavLink } from "react-router-dom";
@@ -14,9 +14,7 @@ function MenuProfile(props) {
       .then(() => {
         context.removeUser();
       })
-      .then(() => {
-        props.history.push("/");
-      })
+
       .catch((error) => {
         console.log(error);
       });

@@ -3,7 +3,6 @@ import apiHandler from "../api/apiHandler";
 import Recipe from "../components/Recipe";
 import Searchbar from "../components/Searchbar";
 import SimpleMenu from "../components/SimpleMenu";
-import { motion } from "framer-motion";
 import { withUser } from "../components/Auth/withUser";
 import Filters from "../components/Filters";
 import loadinggif from "../assets/pacmanloading.gif";
@@ -92,9 +91,7 @@ function Desserts(props) {
         else if (gluten) setRecettes(resp.filter((rec) => rec.gluten === true));
         else {
           setRecettes(resp);
-          setTimeout(() => {
-            setLoading(false);
-          }, 1000);
+          setLoading(false);
         }
       })
       .catch((err) => {

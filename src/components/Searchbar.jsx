@@ -16,7 +16,14 @@ function Searchbar(props) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+      onSubmit={handleSubmit}
+    >
       <i
         style={{ color: "white", marginRight: "10px" }}
         className="fas fa-search"

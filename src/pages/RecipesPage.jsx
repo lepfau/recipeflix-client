@@ -92,9 +92,7 @@ function Recipes(props) {
         else if (gluten) setRecettes(resp.filter((rec) => rec.gluten === true));
         else {
           setRecettes(resp);
-          setTimeout(() => {
-            setLoading(false);
-          }, 1000);
+          setLoading(false);
         }
       })
       .catch((err) => {

@@ -104,7 +104,6 @@ class FormCreate extends Component {
   };
 
   handleRemove = (event, ing) => {
-    console.log(ing);
     event.preventDefault();
     let filtered = [...this.state.ingredients];
     let final = filtered.filter((item) => item !== ing);
@@ -115,7 +114,7 @@ class FormCreate extends Component {
 
   handleRemoveSteps = (event, ing) => {
     event.preventDefault();
-    console.log(ing);
+
     let filtered = [...this.state.etapes];
     let final = filtered.filter((item) => item !== ing);
     this.setState({

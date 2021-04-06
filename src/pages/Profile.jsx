@@ -11,7 +11,6 @@ const Profile = (props) => {
     apiHandler
       .getUserProfile()
       .then((resp) => {
-        console.log(resp);
         setRecipes(resp.id_recipes);
         setFavorites(resp.favorites);
       })
@@ -27,12 +26,6 @@ const Profile = (props) => {
     });
 
     setRecipes(recipes.filter((recipe) => recipe._id !== recipeId));
-  }
-
-  function removeFav(recipeId) {
-    apiHandler.removeFavorite(recipeId).then(() => {
-      setFavorites(favorites.filter((fav) => fav._id !== recipeId));
-    });
   }
 
   return (

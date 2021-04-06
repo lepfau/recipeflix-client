@@ -92,6 +92,7 @@
   position: relative;
   transition: transform 500ms;
   display: flex;
+  overflow: hidden;
 }
 
 .recipe-container .recipe-card:focus,
