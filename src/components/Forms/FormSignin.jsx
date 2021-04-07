@@ -10,6 +10,7 @@ class FormSignin extends Component {
   state = {
     email: "",
     password: "",
+    error: "",
   };
 
   handleChange = (event) => {
@@ -30,7 +31,10 @@ class FormSignin extends Component {
       })
       .catch((error) => {
         console.log(error);
-        // Display error message here, if you set the state
+        setTimeout(() => {
+          this.setState({ error: "" });
+        }, 3000);
+        this.setState({ error: "identifiants invalides" });
       });
   };
 
@@ -42,6 +46,7 @@ class FormSignin extends Component {
     return (
       <div>
         <h1 className="recettes-title">Se connecter</h1>
+        <h1>{this.props.message}</h1>
         <div className="signup-form-container">
           <form
             onChange={this.handleChange}
@@ -56,6 +61,19 @@ class FormSignin extends Component {
               <label htmlFor="password">Password</label>
               <input type="password" id="password" name="password" />
             </div>
+            {this.state.error.length > 0 && (
+              <h3
+                style={{
+                  border: "1px solid red",
+                  padding: "8px",
+                  alignSelf: "center",
+                  marginTop: "10px",
+                }}
+              >
+                {this.state.error}
+              </h3>
+            )}
+
             <button className="btn-sign">Connexion</button>
           </form>
         </div>

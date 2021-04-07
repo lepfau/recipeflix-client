@@ -3,6 +3,7 @@
   flex-direction: column;
   color: white;
   width: 35vh;
+  align-items: flex-end;
 }
 
 .signup-form-container {

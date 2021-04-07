@@ -99,7 +99,9 @@ class FormSignup extends Component {
                 name="userName"
               />
             </div>
-            <p style={{ margin: "20px" }}>* Champs obligatoires</p>
+            <p style={{ margin: "20px", alignSelf: "center" }}>
+              * Champs obligatoires
+            </p>
             <button className="btn-sign">S'enregistrer</button>
           </form>
         </div>

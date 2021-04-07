@@ -18,6 +18,7 @@ function OneRecipe(props) {
   );
   const [user, setUser] = useState("");
   const [btnStyle, setBtnStyle] = useState("Ajouter aux favoris");
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     apiHandler
@@ -40,17 +41,25 @@ function OneRecipe(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    apiHandler.addRate(props.match.params.id, noteComment).then((resp) => {
-      apiHandler
-        .getOneRecipe(props.match.params.id)
-        .then((resp) => {
-          setoneRecipe(resp);
-          setRatings(resp.ratings);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    });
+    apiHandler
+      .addRate(props.match.params.id, noteComment)
+      .then((resp) => {
+        apiHandler
+          .getOneRecipe(props.match.params.id)
+          .then((resp) => {
+            setoneRecipe(resp);
+            setRatings(resp.ratings);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        setMessage(err.response.data.message);
+        setTimeout(() => {
+          setMessage("");
+        }, 3000);
+      });
   }
 
   function handleDelete(rateId) {
@@ -174,6 +183,19 @@ function OneRecipe(props) {
                     Poster la note et/ou le commentaire
                   </button>
                 </form>
+
+                {message.length > 0 && (
+                  <h3
+                    style={{
+                      border: "1px solid red",
+                      padding: "8px",
+                      alignSelf: "center",
+                      marginTop: "10px",
+                    }}
+                  >
+                    {message}{" "}
+                  </h3>
+                )}
               </Box>
             </div>
           </div>
