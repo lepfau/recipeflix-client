@@ -19,8 +19,9 @@ function Searchbar(props) {
     <form
       style={{
         display: "flex",
-        alignItems: "center",
+        alignItems: "baseline",
         justifyContent: "center",
+        marginBottom: "20px",
       }}
       onSubmit={handleSubmit}
     >
