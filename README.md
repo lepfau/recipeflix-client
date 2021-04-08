@@ -2,6 +2,7 @@
 
 > Create recipes to share, filter them, add your favorites, rate and comment them !
 > Project is deployed [here](https://recipe-flix.herokuapp.com) but still on progress
+> Back end part can be found [here](https://github.com/lepfau/recipeflix-server)
 
 ## Table of contents
 
@@ -21,6 +22,7 @@ My biggest progress building the app were using react hooks, handling multiple f
 ## Screenshots
 
 ![App screenshot](./public/screenapp4.png)
+
 ![Create form screenshot](./public/screenapp3.png)
 
 ## Technologies
@@ -35,16 +37,13 @@ List of features ready and TODOs for future development
 
 - Multiple filtering with sliders
 - Create form with intermediate steps(for ingredients and recipe steps)
+- Rating and comment system
+- Favorite recipes list
 - Netflix inspired look
-
-To-do list:
-
-- Rating and comment system (stars?)
-- Favorite recipes list per user
 
 ## Status
 
-Project is: _in progress_
+Project is: _completed_
 
 ## Contact
 
