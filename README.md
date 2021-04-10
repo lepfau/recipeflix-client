@@ -1,15 +1,14 @@
 # App Recipe
 
 > Create recipes to share, filter them, add your favorites, rate and comment them !
-> Project is deployed [here](https://recipe-flix.herokuapp.com) but still on progress
-> Back end part can be found [here](https://github.com/lepfau/recipeflix-server)
+- Project is deployed [here](https://recipe-flix.herokuapp.com) but still on progress.
+- Back end part can be found [here](https://github.com/lepfau/recipeflix-server)
 
 ## Table of contents
 
 - [General info](#general-info)
 - [Screenshots](#screenshots)
 - [Technologies](#technologies)
-- [Setup](#setup)
 - [Features](#features)
 - [Status](#status)
 - [Contact](#contact)
