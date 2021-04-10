@@ -15,7 +15,8 @@
     "react-router-dom": "^5.2.0",
     "react-router-transition": "^2.1.0",
     "react-scripts": "3.4.1",
-    "react-toast-notifications": "^2.4.3"
+    "react-toast-notifications": "^2.4.3",
+    "use-sound": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

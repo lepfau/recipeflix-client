@@ -15,6 +15,7 @@ function Recipes(props) {
   const [lactose, setLactose] = useState(false);
   const [gluten, setGluten] = useState(false);
   const [loading, setLoading] = useState(true);
+
   function handlefilter(resp) {
     if (vegan && gluten)
       setRecettes(

@@ -1,6 +1,10 @@
 import React from "react";
+import useSound from "use-sound";
+import popsound from "../../assets/pop.flac";
 
 function Filter(filter) {
+  const [play] = useSound(popsound);
+
   return (
     <div className="filterrecipe">
       <label
@@ -9,6 +13,7 @@ function Filter(filter) {
         className="switch"
       >
         <input
+        onClick={play}
           id={filter.id}
           type="checkbox"
           checked={filter.checked}

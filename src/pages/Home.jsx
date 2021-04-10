@@ -5,9 +5,13 @@ import { motion } from "framer-motion";
 import apiHandler from "../api/apiHandler";
 import Recipe from "../components/Recipe";
 import recipeflix from "../assets/recipeflix.png";
+import netflix from "../assets/netflixintro.mp3";
+import useSound from "use-sound";
 
 function Home(props) {
   const [lastthree, setLastthree] = useState([]);
+  const [play] = useSound(netflix);
+
   useEffect(() => {
     apiHandler
       .getRecipes()
@@ -50,7 +54,7 @@ function Home(props) {
             })}
           </div>
           <div className="homepage-links">
-            <NavLink to="/recipes" className="homepage-link">
+            <NavLink onClick={play} to="/recipes" className="homepage-link">
               Voir les recettes
             </NavLink>
             <NavLink to="/create" className="homepage-link">
