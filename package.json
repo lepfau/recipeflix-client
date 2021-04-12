@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/lab": "^4.0.0-alpha.57",
+    "@react-pdf/renderer": "^2.0.3",
     "@react-spring/web": "^9.0.0",
     "axios": "^0.19.2",
     "framer-motion": "^4.0.3",
@@ -16,6 +17,7 @@
     "react-router-transition": "^2.1.0",
     "react-scripts": "3.4.1",
     "react-toast-notifications": "^2.4.3",
+    "stringify-object": "^3.3.0",
     "use-sound": "^2.0.1"
   },
   "scripts": {

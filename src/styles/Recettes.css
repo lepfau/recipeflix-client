@@ -14,6 +14,12 @@
   font-size: 3.2em;
   font-weight: 200;
 }
+.ajoute {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 7px;
+  border-radius: 8px;
+  margin: 0px;
+}
 
 .recipe-card {
   color: white;
@@ -225,6 +231,7 @@ input:checked + .slider:before {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 90vh;
 }
 
 .onerecipeimage {
@@ -237,6 +244,16 @@ input:checked + .slider:before {
 .onerecipehr {
   margin-top: 20px;
   width: 50%;
+}
+
+.ratingsonerecipe {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #2f2e2e;
+  border-radius: 8px;
+  padding: 5px;
+  margin-bottom: 50px;
 }
 
 .onerecipetitle {
@@ -252,10 +269,16 @@ input:checked + .slider:before {
 }
 
 .onerecipeing {
+  background: #2f2e2e;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: white;
+  margin-top: 50px;
+  width: 40vh;
+  border-radius: 8px;
+  padding: 5px;
 }
 
 .inggg {
@@ -336,4 +359,26 @@ input:checked + .slider:before {
   border-radius: 8px;
   border: none;
   cursor: pointer;
+}
+
+.ratingcommentfull {
+}
+
+.btncreateform2 {
+  margin-left: 50px;
+  width: 200px;
+  padding: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 15px;
+  background-color: #353535;
+  box-shadow: 4px 4px 8px #141414;
+  font-weight: 800;
+  font-size: 1em;
+  color: white;
+}
+
+.btncreateform2:hover {
+  color: red;
 }

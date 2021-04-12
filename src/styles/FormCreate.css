@@ -226,9 +226,18 @@ hr {
   font-weight: bolder;
   font-size: 1em;
   border: none;
+  cursor: pointer;
 }
 
 .btnformcreate:hover {
   color: firebrick;
   background-color: black;
+}
+
+.listitems:hover {
+  color: red;
+}
+
+.listitems {
+  color: white;
 }

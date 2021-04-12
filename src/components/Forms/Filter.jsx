@@ -13,7 +13,7 @@ function Filter(filter) {
         className="switch"
       >
         <input
-        onClick={play}
+          onClick={play}
           id={filter.id}
           type="checkbox"
           checked={filter.checked}

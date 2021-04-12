@@ -174,4 +174,25 @@ export default {
       .then((res) => res.data)
       .catch(errorHandler);
   },
+
+  addToListe(id, item) {
+    return service
+      .patch(`/api/users/${id}/liste`, item)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  deleteListe(id) {
+    return service
+      .delete(`/api/users/${id}/liste`)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  deleteListeIng(id, item) {
+    return service
+      .delete(`/api/users/${id}/liste/` + item)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
 };
