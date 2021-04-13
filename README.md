@@ -38,6 +38,7 @@ List of features ready and TODOs for future development
 - Create form with intermediate steps(for ingredients and recipe steps)
 - Rating and comment system
 - Favorite recipes list
+- Create grocery list from recipes ingredients and download it in PDF !
 - Netflix inspired look
 
 ## Status
