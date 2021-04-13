@@ -24,6 +24,8 @@ My biggest progress building the app were using react hooks, handling multiple f
 
 ![Create form screenshot](./public/screenapp3.png)
 
+![Profile screenshot](./public/screenapp5.png)
+
 ## Technologies
 
 - React - version 16.13.1
