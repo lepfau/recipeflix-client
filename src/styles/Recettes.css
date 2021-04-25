@@ -48,7 +48,8 @@
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 50px;
-  justify-content: flex-start;
+  width: 90%;
+  justify-content: center;
 }
 
 .searchbar {
@@ -69,19 +70,31 @@
 }
 
 .pageelements {
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+.filters {
   display: flex;
-  align-items: flex-start;
-  margin-top: 15px;
   justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .leftfilters {
-  width: 18%;
-  margin-left: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .container {
-  width: 75%;
+  /* width: 75%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .recipe-card-name {
@@ -202,7 +215,6 @@ input:checked + .slider:before {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
 }
 
 .btn-menu span {
