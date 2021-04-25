@@ -24,6 +24,8 @@ My biggest progress building the app were using react hooks, handling multiple f
 
 ![Create form screenshot](./public/screenapp3.png)
 
+![Profile screenshot](./public/screenapp5.png)
+
 ## Technologies
 
 - React - version 16.13.1
@@ -38,6 +40,7 @@ List of features ready and TODOs for future development
 - Create form with intermediate steps(for ingredients and recipe steps)
 - Rating and comment system
 - Favorite recipes list
+- Create grocery list from recipes ingredients and download it in PDF !
 - Netflix inspired look
 
 ## Status
