@@ -60,7 +60,6 @@
   outline: none !important;
   padding-left: 20px;
   padding-right: 20px;
-
   margin-top: 20px;
 }
 
@@ -289,6 +288,7 @@ input:checked + .slider:before {
   color: white;
   margin-top: 50px;
   width: 40vh;
+  margin-left: 18px;
   border-radius: 8px;
   padding: 5px;
 }

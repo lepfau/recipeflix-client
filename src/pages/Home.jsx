@@ -16,7 +16,7 @@ function Home(props) {
     apiHandler
       .getRecipes()
       .then((resp) => {
-        setLastthree(resp.slice(Math.max(resp.length - 5, 1)));
+        setLastthree(resp.slice(Math.max(resp.length - 4, 1)));
       })
       .catch((err) => {
         console.log(err);
